@@ -19,13 +19,18 @@ public class TestServiceImpl implements TestService {
     @Autowired
     private WorkersRepository workersRepository;
 
+    @Autowired
+    private TestRepository testRepository;
+
     @Override
     @Transactional
     public void showIfWorks() {
 //        testRepository.findAll().forEach(System.out::println);
 //        testRepository.getAll().forEach(System.out::println);
-        workersRepository.findAll().forEach(System.out::println);
-        System.out.println("************************");
-        storyboardArtistRepository.findAll().forEach(System.out::println);
+//        workersRepository.findAll().forEach(System.out::println);
+//        System.out.println("************************");
+//        storyboardArtistRepository.findAll().forEach(System.out::println);
+        testRepository.test("olya");
+        testRepository.test2().forEach(System.out::println);
     }
 }
