@@ -1,4 +1,4 @@
-package andrei.teplyh.dao.entity;
+package andrei.teplyh.entity;
 
 import javax.persistence.*;
 

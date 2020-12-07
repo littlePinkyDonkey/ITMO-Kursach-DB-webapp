@@ -1,15 +1,11 @@
 package andrei.teplyh.service;
 
-import andrei.teplyh.dao.entity.StoryboardArtist;
-import andrei.teplyh.dao.entity.Test;
-import andrei.teplyh.dao.repository.StoryboardArtistRepository;
-import andrei.teplyh.dao.repository.TestRepository;
-import andrei.teplyh.dao.repository.WorkersRepository;
+import andrei.teplyh.repository.StoryboardArtistRepository;
+import andrei.teplyh.repository.TestRepository;
+import andrei.teplyh.repository.WorkersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.stream.Stream;
 
 @Service
 public class TestServiceImpl implements TestService {
@@ -30,7 +26,7 @@ public class TestServiceImpl implements TestService {
 //        workersRepository.findAll().forEach(System.out::println);
 //        System.out.println("************************");
 //        storyboardArtistRepository.findAll().forEach(System.out::println);
-        testRepository.test("olya");
+        //testRepository.test("olya");
         testRepository.test2().forEach(System.out::println);
     }
 }
