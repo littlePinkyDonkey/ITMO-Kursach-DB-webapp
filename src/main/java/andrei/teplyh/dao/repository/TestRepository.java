@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface TestRepository extends CrudRepository<Test, Long> {
-    @Query("select * from test()")
-    List<Test> getAll();
+    @Query("select * from test(:name)")
+    boolean add(@Param("name") String name);
 }

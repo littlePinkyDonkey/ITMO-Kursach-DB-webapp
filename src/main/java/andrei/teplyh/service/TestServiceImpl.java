@@ -22,8 +22,8 @@ public class TestServiceImpl implements TestService {
     @Override
     @Transactional
     public void showIfWorks() {
-        List<Test> list = testRepository.getAll();
-        list.get(0);
+        testRepository.add("dasdas");
+        testRepository.findAll().forEach(System.out::println);
 //        testRepository.getAll().forEach(System.out::println);
 //        workersRepository.findAll().forEach(System.out::println);
 //        System.out.println("************************");
