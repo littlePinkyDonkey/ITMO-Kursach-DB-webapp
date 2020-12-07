@@ -2,9 +2,10 @@ package andrei.teplyh.dao.entity;
 
 import javax.persistence.*;
 
-@Table(name = "test")
+@Entity(name = "test")
 public class Test {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @Column(name = "name")

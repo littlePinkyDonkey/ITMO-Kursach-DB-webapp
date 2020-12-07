@@ -2,10 +2,11 @@ package andrei.teplyh.dao.entity;
 
 import javax.persistence.*;
 
-@Table(name = "storyboard_artists")
+@Entity(name = "storyboard_artists")
 public class StoryboardArtist {
     @Id
     @Column(name = "WORKER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long workerId;
 
     @Column(name = "MAIN_WORKER_ID")
