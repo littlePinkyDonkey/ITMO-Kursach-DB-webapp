@@ -1,40 +1,47 @@
 package andrei.teplyh.entity;
 
+import andrei.teplyh.entity.enums.AbilityTypes;
+
 import javax.persistence.*;
 
 @Entity(name = "test")
 public class Test {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "name")
     private String name;
 
+    @Transient
+    private AbilityTypes abilityType;
+
+    @Column(name = "ability_type")
+    private String abilityValue;
+
     public Test() {
 
     }
-    public  Test(long id, String name) {
+    public  Test(long id, String name, AbilityTypes abilityType) {
         this.id = id;
         this.name = name;
+        this.abilityType = abilityType;
     }
 
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
+    @PrePersist
+    public void prePersist() {
+        if (abilityType != null)
+            abilityValue = abilityType.getDescription();
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
+    @PostLoad
+    public void postLoad() {
+        if (abilityValue != null)
+            abilityType = AbilityTypes.of(abilityValue);
     }
 
     @Override
     public String toString() {
-        return String.format("name = %s", name);
+        return String.format("name = %s || ability = %s", name, abilityValue);
     }
 }

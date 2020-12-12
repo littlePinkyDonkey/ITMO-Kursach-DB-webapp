@@ -1,4 +1,4 @@
-package andrei.teplyh.entity;
+package andrei.teplyh.entity.workers;
 
 import javax.persistence.*;
 
@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class StoryboardArtist {
     @Id
     @Column(name = "WORKER_ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long workerId;
 
     @Column(name = "MAIN_WORKER_ID")

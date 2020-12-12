@@ -1,6 +1,6 @@
-package andrei.teplyh.repository;
+package andrei.teplyh.repository.workers;
 
-import andrei.teplyh.entity.StoryboardArtist;
+import andrei.teplyh.entity.workers.StoryboardArtist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
