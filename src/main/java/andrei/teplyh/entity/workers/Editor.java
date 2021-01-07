@@ -5,8 +5,7 @@ import andrei.teplyh.entity.enums.EditorPositions;
 import javax.persistence.*;
 
 @Entity(name = "editors")
-public class Editor {
-    @Id
+public class Editor extends Worker {
     @Column(name = "WORKER_ID")
     private long workerId;
 
@@ -42,5 +41,10 @@ public class Editor {
     public void postLoad() {
         if (editorValue != null)
             this.editorPosition = EditorPositions.of(editorValue);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s || workerId = %d || main_worker_id  =%d", super.toString(), workerId, mainWorkerId);
     }
 }

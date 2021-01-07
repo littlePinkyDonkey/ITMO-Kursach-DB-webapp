@@ -6,8 +6,7 @@ import andrei.teplyh.entity.enums.UsingTechnologies;
 import javax.persistence.*;
 
 @Entity(name = "artists")
-public class Artist {
-    @Id
+public class Artist extends Worker {
     @Column(name = "WORKER_ID")
     private long workerId;
 
@@ -55,6 +54,7 @@ public class Artist {
 
     @Override
     public String toString() {
-        return String.format("artist_type = %s || artist_id = %d || using_technology = %s", artistValue, workerId, technologyValue);
+        return String.format("%s || workerId = %d || main_worker_id  =%d || artist_type = %s || artist_id = %d || using_technology = %s",
+                super.toString(), workerId, mainWorkerId, artistValue, workerId, technologyValue);
     }
 }

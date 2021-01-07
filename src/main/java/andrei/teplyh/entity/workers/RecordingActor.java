@@ -5,8 +5,7 @@ import andrei.teplyh.entity.enums.RecordingActorsPositions;
 import javax.persistence.*;
 
 @Entity(name = "recording_actors")
-public class RecordingActor {
-    @Id
+public class RecordingActor extends Worker {
     @Column(name = "WORKER_ID")
     private long workerId;
 
@@ -38,5 +37,10 @@ public class RecordingActor {
     public void postLoad() {
         if (actorValue != null)
             this.recordingActorsPosition = RecordingActorsPositions.of(actorValue);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s || workerId = %d || main_worker_id  =%d", super.toString(), workerId, mainWorkerId);
     }
 }

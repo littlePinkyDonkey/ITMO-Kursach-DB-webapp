@@ -2,11 +2,9 @@ package andrei.teplyh.entity.workers;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity(name = "smoothing_specialist")
-public class SmoothingSpecialist {
-    @Id
+public class SmoothingSpecialist extends Worker {
     @Column(name = "WORKER_ID")
     private long workerId;
 
@@ -18,5 +16,10 @@ public class SmoothingSpecialist {
     public SmoothingSpecialist(long workerId, long mainWorkerId) {
         this.workerId = workerId;
         this.mainWorkerId = mainWorkerId;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s || workerId = %d || main_worker_id = %d", super.toString(), workerId, mainWorkerId);
     }
 }

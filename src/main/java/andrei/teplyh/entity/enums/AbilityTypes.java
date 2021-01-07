@@ -6,7 +6,7 @@ public enum AbilityTypes {
     ATTACK("attack"),
     DEFENCE("defence"),
     HEAL("heal"),
-    CHATTING("CHATTING");
+    CHATTING("chatting");
 
     private String description;
 

@@ -3,8 +3,7 @@ package andrei.teplyh.entity.workers;
 import javax.persistence.*;
 
 @Entity(name = "art_director")
-public class ArtDirector {
-    @Id
+public class ArtDirector extends Worker {
     @Column(name = "WORKER_ID")
     private long workerId;
 
@@ -16,5 +15,10 @@ public class ArtDirector {
     public ArtDirector(long workerId, long mainWorkerId) {
         this.workerId = workerId;
         this.mainWorkerId = mainWorkerId;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s || workerId = %d || main_worker_id = %d", super.toString(), workerId, mainWorkerId);
     }
 }

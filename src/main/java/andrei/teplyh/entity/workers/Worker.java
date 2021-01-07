@@ -3,7 +3,8 @@ package andrei.teplyh.entity.workers;
 import javax.persistence.*;
 
 @Entity(name = "workers")
-public class Workers {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Worker {
     @Id
     @Column(name = "MAIN_WORKER_ID")
     private long mainWorkerId;
@@ -23,9 +24,9 @@ public class Workers {
     @Column(name = "SECOND_NAME")
     private String secondName;
 
-    public Workers() {
+    public Worker() {
     }
-    public Workers(String name, String gender, int age, String birthPlace, String secondName) {
+    public Worker(String name, String gender, int age, String birthPlace, String secondName) {
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -73,7 +74,7 @@ public class Workers {
 
     @Override
     public String toString() {
-        return String.format("mainWorkerId = %d | name = %s | gender = %s | age = %d | birthPlace = %s | secondName = %s",
-                mainWorkerId, name, gender, age, birthPlace, secondName);
+        return String.format("name = %s | gender = %s | age = %d | birthPlace = %s | secondName = %s",
+                name, gender, age, birthPlace, secondName);
     }
 }

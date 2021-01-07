@@ -3,11 +3,9 @@ package andrei.teplyh.entity.workers;
 import andrei.teplyh.entity.enums.ProducerRoles;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity(name = "producers")
-public class Producer {
-    @Id
+public class Producer extends Worker {
     @Column(name = "WORKER_ID")
     private long workerId;
 
@@ -39,5 +37,10 @@ public class Producer {
     public void postLoad() {
         if (roleValue != null)
             this.producerRole = ProducerRoles.of(roleValue);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s || workerId = %d || main_worker_id  =%d", super.toString(), workerId, mainWorkerId);
     }
 }

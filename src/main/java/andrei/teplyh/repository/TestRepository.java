@@ -12,11 +12,17 @@ import java.util.List;
 @Repository
 public interface TestRepository extends JpaRepository<Test, Long> {
     @Procedure("test")
-    boolean test(String name);
+    List<Test> test();
 
+    /**
+     * Use it when you need to call a function which returns set of elements.
+    **/
     @Query(value = "select * from test2()", nativeQuery = true)
     List<Test> test2();
 
+    /**
+     * Use it when you need to call a procedure or function which returns a result.
+     **/
     @Procedure("test3")
     boolean test3(String name, String ability);
 }

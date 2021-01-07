@@ -2,11 +2,9 @@ package andrei.teplyh.entity.workers;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity(name = "screenwriters")
-public class Screenwriter {
-    @Id
+public class Screenwriter extends Worker {
     @Column(name = "WORKER_ID")
     private long workerId;
 
@@ -26,5 +24,10 @@ public class Screenwriter {
         this.mainWorkerId = mainWorkerId;
         this.filmsNumber = filmsNumber;
         this.genres = genres;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s || workerId = %d || main_worker_id = %d", super.toString(), workerId, mainWorkerId);
     }
 }
