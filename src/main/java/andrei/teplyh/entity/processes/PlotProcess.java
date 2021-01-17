@@ -1,7 +1,12 @@
 package andrei.teplyh.entity.processes;
 
+import andrei.teplyh.entity.pivot.Plot;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "plot_process")
 public class PlotProcess extends Process {
@@ -10,6 +15,9 @@ public class PlotProcess extends Process {
 
     @Column(name = "MAIN_PROCESS_ID")
     private int mainProcessId;
+
+    @OneToMany(mappedBy = "plotProcess")
+    private List<Plot> plots = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
