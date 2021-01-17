@@ -7,10 +7,10 @@ import javax.persistence.*;
 @Entity(name = "producers")
 public class Producer extends Worker {
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
     @Transient
     private ProducerRoles producerRole;
@@ -18,13 +18,27 @@ public class Producer extends Worker {
     @Column(name = "ROLE")
     private String roleValue;
 
-    public Producer() {
-    }
-    public Producer(long workerId, long mainWorkerId, ProducerRoles producerRole, String roleValue) {
-        this.workerId = workerId;
+    @Override
+    public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
+    }
+    @Override
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+
+    public int getWorkerId() {
+        return workerId;
+    }
+    public void setWorkerId(int workerId) {
+        this.workerId = workerId;
+    }
+
+    public ProducerRoles getProducerRole() {
+        return producerRole;
+    }
+    public void setProducerRole(ProducerRoles producerRole) {
         this.producerRole = producerRole;
-        this.roleValue = roleValue;
     }
 
     @PrePersist

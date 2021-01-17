@@ -6,15 +6,24 @@ import javax.persistence.Entity;
 @Entity(name = "audio_specialist")
 public class AudioSpecialist extends Worker {
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
-    public AudioSpecialist() {
+    public int getWorkerId() {
+        return workerId;
     }
-    public AudioSpecialist(long workerId, long mainWorkerId) {
+    public void setWorkerId(int workerId) {
         this.workerId = workerId;
+    }
+
+    @Override
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+    @Override
+    public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
     }
 

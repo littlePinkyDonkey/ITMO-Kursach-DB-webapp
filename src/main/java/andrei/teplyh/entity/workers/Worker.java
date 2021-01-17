@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Worker {
     @Id
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
     @Column(name = "NAME")
     private String name;
@@ -24,49 +24,43 @@ public class Worker {
     @Column(name = "SECOND_NAME")
     private String secondName;
 
-    public Worker() {
-    }
-    public Worker(String name, String gender, int age, String birthPlace, String secondName) {
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.birthPlace = birthPlace;
-        this.secondName = secondName;
-    }
-
-    public long getMainWorkerId() {
+    public int getMainWorkerId() {
         return mainWorkerId;
     }
-    public String getName() {
-        return name;
-    }
-    public String getGender() {
-        return gender;
-    }
-    public int getAge() {
-        return age;
-    }
-    public String getBirthPlace() {
-        return birthPlace;
-    }
-    public String getSecondName() {
-        return secondName;
+    public void setMainWorkerId(int mainWorkerId) {
+        this.mainWorkerId = mainWorkerId;
     }
 
-    public void setMainWorkerId(long mainWorkerId) {
-        this.mainWorkerId = mainWorkerId;
+    public String getName() {
+        return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getGender() {
+        return gender;
+    }
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
     }
     public void setAge(int age) {
         this.age = age;
     }
+
+    public String getBirthPlace() {
+        return birthPlace;
+    }
     public void setBirthPlace(String birthPlace) {
         this.birthPlace = birthPlace;
+    }
+
+    public String getSecondName() {
+        return secondName;
     }
     public void setSecondName(String secondName) {
         this.secondName = secondName;

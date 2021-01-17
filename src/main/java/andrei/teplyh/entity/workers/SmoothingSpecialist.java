@@ -4,17 +4,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity(name = "smoothing_specialist")
-public class SmoothingSpecialist extends Worker {
+public class SmoothingSpecialist extends Worker{
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
-    public SmoothingSpecialist() {
+    public int getWorkerId() {
+        return workerId;
     }
-    public SmoothingSpecialist(long workerId, long mainWorkerId) {
+    public void setWorkerId(int workerId) {
         this.workerId = workerId;
+    }
+
+    @Override
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+    @Override
+    public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
     }
 

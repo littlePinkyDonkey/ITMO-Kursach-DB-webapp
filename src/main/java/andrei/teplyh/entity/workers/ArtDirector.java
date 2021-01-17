@@ -5,15 +5,24 @@ import javax.persistence.*;
 @Entity(name = "art_director")
 public class ArtDirector extends Worker {
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
-    public ArtDirector() {
+    public int getWorkerId() {
+        return workerId;
     }
-    public ArtDirector(long workerId, long mainWorkerId) {
+    public void setWorkerId(int workerId) {
         this.workerId = workerId;
+    }
+
+    @Override
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+    @Override
+    public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
     }
 

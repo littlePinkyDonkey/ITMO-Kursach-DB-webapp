@@ -8,10 +8,10 @@ import javax.persistence.*;
 @Entity(name = "artists")
 public class Artist extends Worker {
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
     @Transient
     private ArtistTypes artistType;
@@ -25,15 +25,41 @@ public class Artist extends Worker {
     @Column(name = "USING_TECHNOLOGY")
     private String technologyValue;
 
-    public Artist() {
+    public int getWorkerId() {
+        return workerId;
     }
-    public Artist(long workerId, long mainWorkerId, ArtistTypes artistType, String artistValue, UsingTechnologies usingTechnology, String technologyValue) {
+    public void setWorkerId(int workerId) {
         this.workerId = workerId;
-        this.mainWorkerId = mainWorkerId;
+    }
+
+    public ArtistTypes getArtistType() {
+        return artistType;
+    }
+    public void setArtistType(ArtistTypes artistType) {
         this.artistType = artistType;
+    }
+
+    public String getArtistValue() {
+        return artistValue;
+    }
+    public void setArtistValue(String artistValue) {
         this.artistValue = artistValue;
+    }
+
+    public UsingTechnologies getUsingTechnology() {
+        return usingTechnology;
+    }
+    public void setUsingTechnology(UsingTechnologies usingTechnology) {
         this.usingTechnology = usingTechnology;
-        this.technologyValue = technologyValue;
+    }
+
+    @Override
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+    @Override
+    public void setMainWorkerId(int mainWorkerId) {
+        this.mainWorkerId = mainWorkerId;
     }
 
     @PrePersist

@@ -5,12 +5,12 @@ import andrei.teplyh.entity.enums.EditorPositions;
 import javax.persistence.*;
 
 @Entity(name = "editors")
-public class Editor extends Worker {
+public class Editor extends Worker{
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
     @Column(name = "GENRES")
     private String[] genres;
@@ -21,14 +21,34 @@ public class Editor extends Worker {
     @Column(name = "EDITOR_POSITIONS")
     private String editorValue;
 
-    public Editor() {
+    public int getWorkerId() {
+        return workerId;
     }
-    public Editor(long workerId, long mainWorkerId, String[] genres, EditorPositions editorPosition, String editorValue) {
+    public void setWorkerId(int workerId) {
         this.workerId = workerId;
+    }
+
+    @Override
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+    @Override
+    public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
+    }
+
+    public String[] getGenres() {
+        return genres;
+    }
+    public void setGenres(String[] genres) {
         this.genres = genres;
+    }
+
+    public EditorPositions getEditorPosition() {
+        return editorPosition;
+    }
+    public void setEditorPosition(EditorPositions editorPosition) {
         this.editorPosition = editorPosition;
-        this.editorValue = editorValue;
     }
 
     @PrePersist

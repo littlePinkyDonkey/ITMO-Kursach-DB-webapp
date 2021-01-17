@@ -5,12 +5,13 @@ import andrei.teplyh.entity.enums.RecordingActorsPositions;
 import javax.persistence.*;
 
 @Entity(name = "recording_actors")
-public class RecordingActor extends Worker {
+public class RecordingActor {
+    @Id
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
     @Transient
     private RecordingActorsPositions recordingActorsPosition;
@@ -18,13 +19,25 @@ public class RecordingActor extends Worker {
     @Column(name = "POSITION")
     private String actorValue;
 
-    public RecordingActor() {
+    public int getWorkerId() {
+        return workerId;
     }
-    public RecordingActor(long workerId, long mainWorkerId, RecordingActorsPositions recordingActorsPosition, String actorValue) {
+    public void setWorkerId(int workerId) {
         this.workerId = workerId;
+    }
+
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+    public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
+    }
+
+    public RecordingActorsPositions getRecordingActorsPosition() {
+        return recordingActorsPosition;
+    }
+    public void setRecordingActorsPosition(RecordingActorsPositions recordingActorsPosition) {
         this.recordingActorsPosition = recordingActorsPosition;
-        this.actorValue = actorValue;
     }
 
     @PrePersist

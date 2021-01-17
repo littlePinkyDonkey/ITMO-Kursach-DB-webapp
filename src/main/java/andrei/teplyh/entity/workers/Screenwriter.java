@@ -6,10 +6,10 @@ import javax.persistence.Entity;
 @Entity(name = "screenwriters")
 public class Screenwriter extends Worker {
     @Column(name = "WORKER_ID")
-    private long workerId;
+    private int workerId;
 
     @Column(name = "MAIN_WORKER_ID")
-    private long mainWorkerId;
+    private int mainWorkerId;
 
     @Column(name = "FILMS_NUMBER")
     private int filmsNumber;
@@ -17,12 +17,33 @@ public class Screenwriter extends Worker {
     @Column(name = "GENRES")
     private String[] genres;
 
-    public Screenwriter() {
+    public int getWorkerId() {
+        return workerId;
     }
-    public Screenwriter(long workerId, long mainWorkerId, int filmsNumber, String[] genres) {
+    public void setWorkerId(int workerId) {
         this.workerId = workerId;
+    }
+
+    @Override
+    public int getMainWorkerId() {
+        return mainWorkerId;
+    }
+    @Override
+    public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
+    }
+
+    public int getFilmsNumber() {
+        return filmsNumber;
+    }
+    public void setFilmsNumber(int filmsNumber) {
         this.filmsNumber = filmsNumber;
+    }
+
+    public String[] getGenres() {
+        return genres;
+    }
+    public void setGenres(String[] genres) {
         this.genres = genres;
     }
 
