@@ -2,6 +2,7 @@ package andrei.teplyh.service;
 
 import andrei.teplyh.entity.enums.ProducerRoles;
 import andrei.teplyh.entity.pivot.Plot;
+import andrei.teplyh.entity.processes.PlotProcess;
 import andrei.teplyh.entity.processes.Process;
 import andrei.teplyh.entity.workers.ArtDirector;
 import andrei.teplyh.entity.workers.Producer;
@@ -72,7 +73,7 @@ public class TestServiceImpl implements TestService {
 //        System.out.println(test);
 //        advertisingProcessRepository.findAll().forEach(System.out::println);
 
-        plotProcessRepository.findAll().forEach(System.out::println);
+        List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
         List<Plot> plots = plotRepository.findAll();
         System.out.println("dsadsa");
 

@@ -1,7 +1,12 @@
 package andrei.teplyh.entity.processes;
 
+import andrei.teplyh.entity.pivot.Character;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "character_drawing_process")
 public class CharacterDrawingProcess extends Process {
@@ -10,6 +15,9 @@ public class CharacterDrawingProcess extends Process {
 
     @Column(name = "MAIN_PROCESS_ID")
     private int mainProcessId;
+
+    @OneToMany(mappedBy = "drawingProcess")
+    private List<Character> characters = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -25,5 +33,12 @@ public class CharacterDrawingProcess extends Process {
     @Override
     public void setMainProcessId(int mainProcessId) {
         this.mainProcessId = mainProcessId;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
     }
 }

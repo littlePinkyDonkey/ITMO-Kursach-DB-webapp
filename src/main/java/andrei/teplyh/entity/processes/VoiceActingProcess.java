@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.VoiceActingTypes;
+import andrei.teplyh.entity.pivot.Character;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "voice_acting_process")
 public class VoiceActingProcess extends Process {
@@ -17,6 +20,9 @@ public class VoiceActingProcess extends Process {
 
     @Column(name = "VOICE_ACTING_TYPE")
     private String voiceActingValue;
+
+    @OneToMany(mappedBy = "voiceActingProcess")
+    private List<Character> characters = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -39,6 +45,13 @@ public class VoiceActingProcess extends Process {
     }
     public void setVoiceActingType(VoiceActingTypes voiceActingType) {
         this.voiceActingType = voiceActingType;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
     }
 
     @PrePersist

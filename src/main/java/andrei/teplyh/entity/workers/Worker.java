@@ -1,6 +1,10 @@
 package andrei.teplyh.entity.workers;
 
+import andrei.teplyh.entity.Artifact;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "workers")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -23,6 +27,9 @@ public class Worker {
 
     @Column(name = "SECOND_NAME")
     private String secondName;
+
+    @OneToMany(mappedBy = "worker")
+    private List<Artifact> artifacts = new ArrayList<>();
 
     public int getMainWorkerId() {
         return mainWorkerId;
@@ -64,6 +71,13 @@ public class Worker {
     }
     public void setSecondName(String secondName) {
         this.secondName = secondName;
+    }
+
+    public List<Artifact> getArtifacts() {
+        return artifacts;
+    }
+    public void setArtifacts(List<Artifact> artifacts) {
+        this.artifacts = artifacts;
     }
 
     @Override
