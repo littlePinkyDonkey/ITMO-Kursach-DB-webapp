@@ -72,6 +72,27 @@ public class Battle {
         this.battleDrawingProcess = battleDrawingProcess;
     }
 
+    public List<Location> getLocations() {
+        return locations;
+    }
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
+
+    public List<Ability> getAbilities() {
+        return abilities;
+    }
+    public void setAbilities(List<Ability> abilities) {
+        this.abilities = abilities;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
+    }
+
     public String getName() {
         return name;
     }

@@ -90,6 +90,20 @@ public class Ability {
         this.complexityLevel = complexityLevel;
     }
 
+    public List<Battle> getBattles() {
+        return battles;
+    }
+    public void setBattles(List<Battle> battles) {
+        this.battles = battles;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
+    }
+
     @PrePersist
     public void prePersist() {
         if (abilityType != null)

@@ -82,6 +82,13 @@ public class Plot {
         this.description = description;
     }
 
+    public List<Event> getEvents() {
+        return events;
+    }
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
     @PrePersist
     public void prePersist() {
         if (plotType != null)

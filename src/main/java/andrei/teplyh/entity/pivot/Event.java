@@ -70,4 +70,25 @@ public class Event {
     public void setImportanceLevel(int importanceLevel) {
         this.importanceLevel = importanceLevel;
     }
+
+    public List<Plot> getPlots() {
+        return plots;
+    }
+    public void setPlots(List<Plot> plots) {
+        this.plots = plots;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
+    }
 }

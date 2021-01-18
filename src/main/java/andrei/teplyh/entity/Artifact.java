@@ -31,6 +31,9 @@ public class Artifact {
     @Column(name = "UPLOAD_DATE")
     private Timestamp uploadDate;
 
+    @Column(name = "FILE_LINK")
+    private String filePath;
+
     @ManyToMany
     @JoinTable(
             name = "process_artifact",
@@ -79,6 +82,13 @@ public class Artifact {
     }
     public void setProcesses(List<Process> processes) {
         this.processes = processes;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @PrePersist

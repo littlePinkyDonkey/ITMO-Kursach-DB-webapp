@@ -102,6 +102,27 @@ public class Location {
         this.forBattle = forBattle;
     }
 
+    public String getLocationValue() {
+        return locationValue;
+    }
+    public void setLocationValue(String locationValue) {
+        this.locationValue = locationValue;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public List<Battle> getBattles() {
+        return battles;
+    }
+    public void setBattles(List<Battle> battles) {
+        this.battles = battles;
+    }
+
     @PrePersist
     public void prePersist() {
         if (locationType != null)

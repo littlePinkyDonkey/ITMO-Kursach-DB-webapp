@@ -150,4 +150,25 @@ public class Character {
     public void setBirthDate(Timestamp birthDate) {
         this.birthDate = birthDate;
     }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public List<Battle> getBattles() {
+        return battles;
+    }
+    public void setBattles(List<Battle> battles) {
+        this.battles = battles;
+    }
+
+    public List<Ability> getAbilities() {
+        return abilities;
+    }
+    public void setAbilities(List<Ability> abilities) {
+        this.abilities = abilities;
+    }
 }
