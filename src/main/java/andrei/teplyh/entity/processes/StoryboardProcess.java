@@ -25,6 +25,14 @@ public class StoryboardProcess extends Process {
     )
     private List<StoryboardArtist> artists = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "revision_storyboarding",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "REVISION_ID")
+    )
+    private List<RevisionsProcess> revisionsProcesses = new ArrayList<>();
+
     public int getProcessId() {
         return processId;
     }
@@ -53,6 +61,13 @@ public class StoryboardProcess extends Process {
     }
     public void setArtists(List<StoryboardArtist> artists) {
         this.artists = artists;
+    }
+
+    public List<RevisionsProcess> getRevisionsProcesses() {
+        return revisionsProcesses;
+    }
+    public void setRevisionsProcesses(List<RevisionsProcess> revisionsProcesses) {
+        this.revisionsProcesses = revisionsProcesses;
     }
 
     @Override

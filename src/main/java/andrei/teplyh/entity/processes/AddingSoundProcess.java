@@ -29,6 +29,14 @@ public class AddingSoundProcess extends Process {
     )
     private List<AudioSpecialist> workers = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "revision_adding_sound",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "REVISION_ID")
+    )
+    private List<RevisionsProcess> revisionsProcesses = new ArrayList<>();
+
     public int getProcessId() {
         return processId;
     }
@@ -57,6 +65,13 @@ public class AddingSoundProcess extends Process {
     }
     public void setWorkers(List<AudioSpecialist> workers) {
         this.workers = workers;
+    }
+
+    public List<RevisionsProcess> getRevisionsProcesses() {
+        return revisionsProcesses;
+    }
+    public void setRevisionsProcesses(List<RevisionsProcess> revisionsProcesses) {
+        this.revisionsProcesses = revisionsProcesses;
     }
 
     @PrePersist

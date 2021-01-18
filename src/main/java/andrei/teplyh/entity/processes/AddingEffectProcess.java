@@ -29,6 +29,14 @@ public class AddingEffectProcess extends Process {
     )
     private List<Artist> workers = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "revision_adding_effects",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "REVISION_ID")
+    )
+    private List<RevisionsProcess> revisionsProcesses = new ArrayList<>();
+
     public int getProcessId() {
         return processId;
     }
@@ -57,6 +65,13 @@ public class AddingEffectProcess extends Process {
     }
     public void setWorkers(List<Artist> workers) {
         this.workers = workers;
+    }
+
+    public List<RevisionsProcess> getRevisionsProcesses() {
+        return revisionsProcesses;
+    }
+    public void setRevisionsProcesses(List<RevisionsProcess> revisionsProcesses) {
+        this.revisionsProcesses = revisionsProcesses;
     }
 
     @PrePersist

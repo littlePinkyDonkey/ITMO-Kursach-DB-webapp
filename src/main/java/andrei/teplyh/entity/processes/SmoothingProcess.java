@@ -22,6 +22,14 @@ public class SmoothingProcess extends Process {
     )
     private List<SmoothingSpecialist> workers = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "revision_smoothing",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "REVISION_ID")
+    )
+    private List<RevisionsProcess> revisionsProcesses = new ArrayList<>();
+
     public int getProcessId() {
         return processId;
     }
@@ -43,5 +51,12 @@ public class SmoothingProcess extends Process {
     }
     public void setWorkers(List<SmoothingSpecialist> workers) {
         this.workers = workers;
+    }
+
+    public List<RevisionsProcess> getRevisionsProcesses() {
+        return revisionsProcesses;
+    }
+    public void setRevisionsProcesses(List<RevisionsProcess> revisionsProcesses) {
+        this.revisionsProcesses = revisionsProcesses;
     }
 }
