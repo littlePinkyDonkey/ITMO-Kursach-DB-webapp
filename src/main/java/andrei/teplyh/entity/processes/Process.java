@@ -1,10 +1,13 @@
 package andrei.teplyh.entity.processes;
 
+import andrei.teplyh.entity.Artifact;
 import andrei.teplyh.entity.enums.ProcessStatuses;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "processes")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -30,6 +33,14 @@ public class Process {
 
     @Column(name = "START_DATE")
     private Timestamp startDate;
+
+    @ManyToMany
+    @JoinTable(
+            name = "process_artifact",
+            joinColumns = @JoinColumn(name = "MAIN_PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ARTIFACT_ID")
+    )
+    private List<Artifact> artifacts = new ArrayList<>();
 
     public int getMainProcessId() {
         return mainProcessId;
@@ -71,6 +82,13 @@ public class Process {
     }
     public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
+    }
+
+    public List<Artifact> getArtifacts() {
+        return artifacts;
+    }
+    public void setArtifacts(List<Artifact> artifacts) {
+        this.artifacts = artifacts;
     }
 
     @PrePersist
