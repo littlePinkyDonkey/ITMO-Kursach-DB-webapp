@@ -7,6 +7,8 @@ import andrei.teplyh.entity.processes.VoiceActingProcess;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "character")
 public class Character {
@@ -47,6 +49,30 @@ public class Character {
 
     @Column(name = "BIRTH_DATE")
     private Timestamp birthDate;
+
+    @ManyToMany
+    @JoinTable(
+            name = "events_characters",
+            joinColumns = @JoinColumn(name = "CHARACTER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EVENT_ID")
+    )
+    private List<Event> events = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "battle_characters",
+            joinColumns = @JoinColumn(name = "CHARACTER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "BATTLE_ID")
+    )
+    private List<Battle> battles = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "characters_abilities",
+            joinColumns = @JoinColumn(name = "CHARACTER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ABILITY_ID")
+    )
+    private List<Ability> abilities = new ArrayList<>();
 
     public int getCharacterId() {
         return characterId;

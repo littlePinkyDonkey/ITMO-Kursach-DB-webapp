@@ -4,6 +4,8 @@ import andrei.teplyh.entity.enums.PlotTypes;
 import andrei.teplyh.entity.processes.PlotProcess;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "plot")
 public class Plot {
@@ -29,6 +31,14 @@ public class Plot {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @ManyToMany
+    @JoinTable(
+            name = "events_plots",
+            joinColumns = @JoinColumn(name = "PLOT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EVENT_ID")
+    )
+    private List<Event> events = new ArrayList<>();
 
     public int getPlotId() {
         return plotId;

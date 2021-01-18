@@ -4,6 +4,8 @@ import andrei.teplyh.entity.enums.AbilityTypes;
 import andrei.teplyh.entity.processes.AbilityDescriptionProcess;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "abilities")
 public class Ability {
@@ -29,6 +31,22 @@ public class Ability {
 
     @Column(name = "COMPLEXITY_LEVEL")
     private int complexityLevel;
+
+    @ManyToMany
+    @JoinTable(
+            name = "battle_abilities",
+            joinColumns = @JoinColumn(name = "ABILITY_ID"),
+            inverseJoinColumns = @JoinColumn(name = "BATTLE_ID")
+    )
+    private List<Battle> battles = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "characters_abilities",
+            joinColumns = @JoinColumn(name = "ABILITY_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CHARACTER_ID")
+    )
+    private List<Character> characters = new ArrayList<>();
 
     public int getAbilityId() {
         return abilityId;

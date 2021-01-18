@@ -4,6 +4,8 @@ import andrei.teplyh.entity.processes.BattleDescriptionProcess;
 import andrei.teplyh.entity.processes.BattleDrawingProcess;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "battle")
 public class Battle {
@@ -24,6 +26,30 @@ public class Battle {
 
     @Column(name = "DURATION")
     private float duration;
+
+    @ManyToMany
+    @JoinTable(
+            name = "battle_location",
+            joinColumns = @JoinColumn(name = "BATTLE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "LOCATION_ID")
+    )
+    private List<Location> locations = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "battle_abilities",
+            joinColumns = @JoinColumn(name = "BATTLE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ABILITY_ID")
+    )
+    private List<Ability> abilities = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "battle_characters",
+            joinColumns = @JoinColumn(name = "BATTLE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CHARACTER_ID")
+    )
+    private List<Character> characters = new ArrayList<>();
 
     public int getBattleId() {
         return battleId;

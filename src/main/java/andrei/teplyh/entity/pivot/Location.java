@@ -5,6 +5,8 @@ import andrei.teplyh.entity.processes.LocationDescriptionProcess;
 import andrei.teplyh.entity.processes.LocationDrawingProcess;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "locations")
 public class Location {
@@ -34,6 +36,22 @@ public class Location {
 
     @Column(name = "FOR_BATTLE")
     private boolean forBattle;
+
+    @ManyToMany
+    @JoinTable(
+            name = "event_location",
+            joinColumns = @JoinColumn(name = "LOCATION_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EVENT_ID")
+    )
+    private List<Event> events = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "battle_location",
+            joinColumns = @JoinColumn(name = "LOCATION_ID"),
+            inverseJoinColumns = @JoinColumn(name = "BATTLE_ID")
+    )
+    private List<Battle> battles = new ArrayList<>();
 
     public int getLocationId() {
         return locationId;

@@ -1,8 +1,8 @@
 package andrei.teplyh.entity.pivot;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "events")
 public class Event {
@@ -18,6 +18,30 @@ public class Event {
 
     @Column(name = "IMPORTANCE_LEVEL")
     private int importanceLevel;
+
+    @ManyToMany
+    @JoinTable(
+            name = "events_plots",
+            joinColumns = @JoinColumn(name = "EVENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PLOT_ID")
+    )
+    private List<Plot> plots = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "event_location",
+            joinColumns = @JoinColumn(name = "EVENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "LOCATION_ID")
+    )
+    private List<Location> locations = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "events_characters",
+            joinColumns = @JoinColumn(name = "EVENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CHARACTER_ID")
+    )
+    private List<Character> characters = new ArrayList<>();
 
     public int getEventId() {
         return eventId;
