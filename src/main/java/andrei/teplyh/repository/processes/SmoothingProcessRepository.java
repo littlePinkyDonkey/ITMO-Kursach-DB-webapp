@@ -17,4 +17,7 @@ public interface SmoothingProcessRepository extends JpaRepository<SmoothingProce
 
     @Procedure("delete_smoothing_process")
     boolean deleteSmoothingProcess(int mainProcessId);
+
+    @Procedure("associate_smoother_and_process")
+    boolean associateSmootherAndProcess(int workerId, int processId);
 }

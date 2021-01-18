@@ -16,4 +16,7 @@ public interface RecordingActorRepository extends JpaRepository<RecordingActor, 
 
     @Procedure("delete_recording_actor")
     boolean deleteRecordingActor(int mainWorkerId);
+
+    @Procedure("associate_recorder_and_process")
+    boolean associateRecorderAndProcess(int workerId, int processId);
 }

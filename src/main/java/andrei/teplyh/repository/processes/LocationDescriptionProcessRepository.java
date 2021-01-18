@@ -17,4 +17,7 @@ public interface LocationDescriptionProcessRepository extends JpaRepository<Loca
 
     @Procedure("delete_location_description_process")
     boolean deleteLocationDescriptionProcess(int mainProcessId);
+
+    @Procedure("associate_regisseur_and_location_process")
+    boolean associateRegisseurAndLocationProcess(int workerId, int processId);
 }

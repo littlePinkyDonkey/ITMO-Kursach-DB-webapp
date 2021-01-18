@@ -16,4 +16,7 @@ public interface EditorRepository extends JpaRepository<Editor, Integer> {
 
     @Procedure("delete_editor")
     boolean deleteEditor(int mainWorkerId);
+
+    @Procedure("associate_editor_and_process")
+    boolean associateEditorAndProcess(int workerId, int processId);
 }

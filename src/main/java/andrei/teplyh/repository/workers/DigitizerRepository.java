@@ -15,4 +15,7 @@ public interface DigitizerRepository extends JpaRepository<Digitizer, Integer> {
 
     @Procedure("delete_digitizer")
     boolean deleteDigitizer(int mainWorkerId);
+
+    @Procedure("associate_digitizer_and_process")
+    boolean associateDigitizerAndProcess(int workerId, int processId);
 }

@@ -17,4 +17,7 @@ public interface CharacterDrawingProcessRepository extends JpaRepository<Charact
 
     @Procedure("delete_character_drawing_process")
     boolean deleteCharacterDrawingProcess(int mainProcessId);
+
+    @Procedure("associate_artist_and_character_drawing_process")
+    boolean associateArtistAndCharacterDrawingProcess(int workerId, int processId);
 }

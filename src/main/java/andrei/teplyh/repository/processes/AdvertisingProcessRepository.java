@@ -18,4 +18,7 @@ public interface AdvertisingProcessRepository extends JpaRepository<AdvertisingP
 
     @Procedure("delete_advertising_process")
     boolean deleteAdvertisingProcess(int mainProcessId);
+
+    @Procedure("associate_producer_and_process")
+    boolean associateProducerAndProcess(int workerId, int processId);
 }

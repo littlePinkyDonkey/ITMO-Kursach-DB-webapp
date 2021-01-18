@@ -18,4 +18,7 @@ public interface VoiceActingProcessRepository extends JpaRepository<VoiceActingP
 
     @Procedure("delete_voice_acting_process")
     boolean deleteVoiceActingProcess(int mainProcessId);
+
+    @Procedure("associate_recorder_and_process")
+    boolean associateRecorderAndProcess(int workerId, int processId);
 }

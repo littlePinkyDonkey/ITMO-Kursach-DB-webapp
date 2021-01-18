@@ -17,4 +17,7 @@ public interface BattleDescriptionProcessRepository extends JpaRepository<Battle
 
     @Procedure("delete_battle_description_process")
     boolean deleteBattleDescriptionProcess(int mainProcessId);
+
+    @Procedure("associate_screenwriter_and_battle_process")
+    boolean associateScreenwriterAndBattleProcess(int workerId, int processId);
 }

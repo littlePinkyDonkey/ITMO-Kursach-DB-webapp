@@ -18,4 +18,7 @@ public interface DigitizationProcessRepository extends JpaRepository<Digitizatio
 
     @Procedure("delete_digitization_process")
     boolean deleteDigitizationProcess(int mainProcessId);
+
+    @Procedure("associate_digitizer_and_process")
+    boolean associateDigitizerAndProcess(int workerId, int processId);
 }

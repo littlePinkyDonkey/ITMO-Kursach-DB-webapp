@@ -18,4 +18,7 @@ public interface AnimationProcessRepository extends JpaRepository<AnimationProce
 
     @Procedure("delete_animation_process")
     boolean deleteAnimationProcess(int mainProcessId);
+
+    @Procedure("associate_artist_and_animation_process")
+    boolean associateArtistAndAnimationProcess(int workerId, int processId);
 }

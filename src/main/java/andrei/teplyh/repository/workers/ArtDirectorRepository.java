@@ -15,4 +15,7 @@ public interface ArtDirectorRepository extends JpaRepository<ArtDirector, Intege
 
     @Procedure("delete_art_director")
     boolean deleteArtDirector(int mainWorkerId);
+
+    @Procedure("associate_art_director_and_process")
+    boolean associateArtDirectorAndProcess(int workerId, int processId);
 }

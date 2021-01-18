@@ -12,4 +12,7 @@ public interface PlotRepository extends JpaRepository<Plot, Integer> {
 
     @Procedure("delete_plot")
     boolean deletePlot(int plotId);
+
+    @Procedure("associate_event_and_plot")
+    boolean associateEventAndPlot(int eventId, int plotId);
 }

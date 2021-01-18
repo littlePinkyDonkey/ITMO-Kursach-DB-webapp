@@ -15,4 +15,7 @@ public interface AudioSpecialistRepository extends JpaRepository<AudioSpecialist
 
     @Procedure("delete_audio_specialist")
     boolean deleteAudioSpecialist(int mainWorkerId);
+
+    @Procedure("associate_audio_specialist_and_process")
+    boolean associateAudioSpecialistAndProcess(int workerId, int processId);
 }

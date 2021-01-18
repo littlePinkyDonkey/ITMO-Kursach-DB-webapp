@@ -18,4 +18,7 @@ public interface AddingEffectProcessRepository extends JpaRepository<AddingEffec
 
     @Procedure("delete_adding_effect_process")
     boolean deleteAddingEffectProcess(int mainProcessId);
+
+    @Procedure("associate_artist_and_effects_process")
+    boolean associateArtistAndEffectsProcess(int workerId, int processId);
 }

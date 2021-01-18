@@ -17,4 +17,7 @@ public interface AbilityDescriptionProcessRepository extends JpaRepository<Abili
 
     @Procedure("delete_ability_description_process")
     boolean deleteAbilityDescriptionProcess(int mainProcessId);
+
+    @Procedure("associate_designer_and_ability_process")
+    boolean associateDesignerAndAbilityProcess(int workerId, int processId);
 }

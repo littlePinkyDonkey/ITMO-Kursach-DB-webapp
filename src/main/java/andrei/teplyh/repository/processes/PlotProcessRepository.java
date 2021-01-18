@@ -17,4 +17,10 @@ public interface PlotProcessRepository extends JpaRepository<PlotProcess, Intege
 
     @Procedure("delete_plot_process")
     boolean deletePlotProcess(int mainProcessId);
+
+    @Procedure("associate_regisseur_and_plot_process")
+    boolean associateRegisseurAndPlotProcess(int workerId, int processId);
+
+    @Procedure("associate_screenwriter_and_plot_process")
+    boolean associateScreenwriterAndPlotProcess(int workerId, int processId);
 }

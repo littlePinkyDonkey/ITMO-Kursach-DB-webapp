@@ -12,4 +12,13 @@ public interface BattleRepository extends JpaRepository<Battle, Integer> {
 
     @Procedure("delete_battle")
     boolean deleteBattle(int battleId);
+
+    @Procedure("associate_battle_and_location")
+    boolean associateBattleAndLocation(int locationId, int battleId);
+
+    @Procedure("associate_battle_and_ability")
+    boolean associateBattleAndAbility(int battleId, int abilityId);
+
+    @Procedure("associate_battle_and_character")
+    boolean associateBattleAndCharacter(int battleId, int characterId);
 }

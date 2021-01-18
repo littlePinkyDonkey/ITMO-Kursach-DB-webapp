@@ -17,4 +17,7 @@ public interface LocationDrawingProcessRepository extends JpaRepository<Location
 
     @Procedure("delete_location_drawing_process")
     boolean deleteLocationDrawingProcess(int mainProcessId);
+
+    @Procedure("associate_artist_and_location_drawing_process")
+    boolean associateArtistAndLocationDrawingProcess(int workerId, int processId);
 }

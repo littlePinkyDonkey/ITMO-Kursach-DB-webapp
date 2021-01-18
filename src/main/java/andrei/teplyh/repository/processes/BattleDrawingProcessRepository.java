@@ -17,4 +17,7 @@ public interface BattleDrawingProcessRepository extends JpaRepository<BattleDraw
 
     @Procedure("delete_battle_drawing_process")
     boolean deleteBattleDrawingProcess(int mainProcessId);
+
+    @Procedure("associate_artist_and_battle_drawing_process")
+    boolean associateArtistAndBattleDrawingProcess(int workerId, int processId);
 }

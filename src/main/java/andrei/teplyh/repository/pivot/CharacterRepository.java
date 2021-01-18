@@ -15,4 +15,13 @@ public interface CharacterRepository extends JpaRepository<Character, Integer> {
 
     @Procedure("delete_character")
     boolean deleteCharacter(int characterId);
+
+    @Procedure("associate_character_and_ability")
+    boolean associateCharacterAndAbility(int abilityId, int characterId);
+
+    @Procedure("associate_battle_and_character")
+    boolean associateBattleAndCharacter(int battleId, int characterId);
+
+    @Procedure("associate_event_and_character")
+    boolean associateEventAndCharacter(int eventId, int characterId);
 }

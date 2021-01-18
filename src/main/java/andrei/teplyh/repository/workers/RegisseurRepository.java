@@ -16,4 +16,10 @@ public interface RegisseurRepository extends JpaRepository<Regisseur, Integer> {
 
     @Procedure("delete_regisseur")
     boolean deleteRegisseur(int mainWorkerId);
+
+    @Procedure("associate_regisseur_and_location_process")
+    boolean associateRegisseurAndLocationProcess(int workerId, int processId);
+
+    @Procedure("associate_regisseur_and_plot_process")
+    boolean associateRegisseurAndPlotProcess(int workerId, int processId);
 }

@@ -15,4 +15,10 @@ public interface RolesDesignerRepository extends JpaRepository<RolesDesigner, In
 
     @Procedure("delete_roles_designer")
     boolean deleteRolesDesigner(int mainWorkerId);
+
+    @Procedure("associate_designer_and_ability_process")
+    boolean associateDesignerAndAbilityProcess(int workerId, int processId);
+
+    @Procedure("associate_designer_and_character_process")
+    boolean associateDesignerAndCharacterProcess(int workerId, int processId);
 }

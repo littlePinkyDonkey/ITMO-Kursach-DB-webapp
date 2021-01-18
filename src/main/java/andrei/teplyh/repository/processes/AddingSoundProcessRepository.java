@@ -18,4 +18,7 @@ public interface AddingSoundProcessRepository extends JpaRepository<AddingSoundP
 
     @Procedure("delete_adding_sound_process")
     boolean deleteAddingSoundProcess(int mainProcessId);
+
+    @Procedure("associate_audio_specialist_and_process")
+    boolean associateAudioSpecialistAndProcess(int workerId, int processId);
 }

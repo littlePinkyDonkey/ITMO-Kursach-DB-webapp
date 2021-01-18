@@ -16,4 +16,10 @@ public interface ScreenwriterRepository extends JpaRepository<Screenwriter, Inte
 
     @Procedure("delete_screenwriter")
     boolean deleteScreenwriter(int mainWorkerId);
+
+    @Procedure("associate_screenwriter_and_battle_process")
+    boolean associateScreenwriterAndBattleProcess(int workerId, int processId);
+
+    @Procedure("associate_screenwriter_and_plot_process")
+    boolean associateScreenwriterAndPlotProcess(int workerId, int processId);
 }

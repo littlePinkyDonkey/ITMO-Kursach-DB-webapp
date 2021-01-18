@@ -12,4 +12,10 @@ public interface LocationRepository extends JpaRepository<Location, Integer> {
 
     @Procedure("delete_locations")
     boolean deleteLocation(int locationId);
+
+    @Procedure("associate_battle_and_location")
+    boolean associateBattleAndLocation(int locationId, int battleId);
+
+    @Procedure("associate_event_and_location")
+    boolean associateEventAndLocation(int locationId, int eventId);
 }

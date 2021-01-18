@@ -18,4 +18,7 @@ public interface StoryboardProcessRepository extends JpaRepository<StoryboardPro
 
     @Procedure("delete_storyboard_process")
     boolean deleteStoryboardProcess(int mainProcessId);
+
+    @Procedure("associate_storyboarder_and_process")
+    boolean associateStoryboarderAndProcess(int workerId, int processId);
 }

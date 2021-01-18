@@ -18,4 +18,7 @@ public interface RevisionsProcessRepository extends JpaRepository<RevisionsProce
 
     @Procedure("delete_revisions_process")
     boolean deleteRevisionsProcess(int mainProcessId);
+
+    @Procedure("associate_art_director_and_process")
+    boolean associateArtDirectorAndProcess(int workerId, int processId);
 }

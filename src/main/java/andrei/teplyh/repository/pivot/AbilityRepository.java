@@ -12,4 +12,10 @@ public interface AbilityRepository extends JpaRepository<Ability, Integer> {
 
     @Procedure("delete_ability")
     boolean deleteAbility(int abilityId);
+
+    @Procedure("associate_character_and_ability")
+    boolean associateCharacterAndAbility(int abilityId, int characterId);
+
+    @Procedure("associate_battle_and_ability")
+    boolean associateBattleAndAbility(int battleId, int abilityId);
 }

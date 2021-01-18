@@ -17,4 +17,7 @@ public interface CharacterSelectProcessRepository extends JpaRepository<Characte
 
     @Procedure("delete_character_select_process")
     boolean deleteCharacterSelectProcess(int mainProcessId);
+
+    @Procedure("associate_editor_and_process")
+    boolean associateEditorAndProcess(int workerId, int processId);
 }
