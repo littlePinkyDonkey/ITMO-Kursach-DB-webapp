@@ -14,9 +14,6 @@ public class Regisseur extends Worker{
     @Column(name = "FILMS_NUMBER")
     private int filmsNumber;
 
-    @Column(name = "GENRES")
-    private String[] genres;
-
     public int getWorkerId() {
         return workerId;
     }
@@ -38,13 +35,6 @@ public class Regisseur extends Worker{
     }
     public void setFilmsNumber(int filmsNumber) {
         this.filmsNumber = filmsNumber;
-    }
-
-    public String[] getGenres() {
-        return genres;
-    }
-    public void setGenres(String[] genres) {
-        this.genres = genres;
     }
 
     @Override

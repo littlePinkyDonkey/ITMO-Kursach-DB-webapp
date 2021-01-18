@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 public interface ScreenwriterRepository extends JpaRepository<Screenwriter, Integer> {
     @Procedure("add_screenwriter")
     boolean addScreenwriter(String name, String secondName, String gender, int age, String placeOfBirth,
-                            int filmsNumber, String[] genres);
+                            int filmsNumber);
 
     @Procedure("add_existing_screenwriter")
-    boolean addExistingScreenwriter(int mainWorkerId, int filmsNumber, String[] genres);
+    boolean addExistingScreenwriter(int mainWorkerId, int filmsNumber);
 
     @Procedure("delete_screenwriter")
     boolean deleteScreenwriter(int mainWorkerId);

@@ -1,6 +1,5 @@
 package andrei.teplyh.service;
 
-import andrei.teplyh.entity.Artifact;
 import andrei.teplyh.entity.enums.ArtifactTypes;
 import andrei.teplyh.entity.enums.ProducerRoles;
 import andrei.teplyh.entity.pivot.Plot;
@@ -9,7 +8,6 @@ import andrei.teplyh.entity.processes.Process;
 import andrei.teplyh.entity.workers.ArtDirector;
 import andrei.teplyh.entity.workers.Producer;
 import andrei.teplyh.entity.workers.Regisseur;
-import andrei.teplyh.entity.workers.Worker;
 import andrei.teplyh.repository.ArtifactRepository;
 import andrei.teplyh.repository.UserRepository;
 import andrei.teplyh.repository.pivot.PlotRepository;
@@ -82,21 +80,10 @@ public class TestServiceImpl implements TestService {
 //        System.out.println(test);
 //        advertisingProcessRepository.findAll().forEach(System.out::println);
 
-//        String[] array = {"good", "bad"};
+//        workersRepository.addWorker("andrey", "teplyh", "male", 20, "russia");
 //
-//        Regisseur regisseur = new Regisseur();
-//        regisseur.setName("andrey");
-//        regisseur.setSecondName("teplyh");
-//        regisseur.setGender("male");
-//        regisseur.setAge(20);
-//        regisseur.setBirthPlace("russia");
-//        regisseur.setFilmsNumber(2);
-//        regisseur.setGenres(array);
-//        regisseurRepository.addRegisseur(regisseur.getName(), regisseur.getSecondName(), regisseur.getGender(), regisseur.getAge(),
-//                regisseur.getBirthPlace(), regisseur.getFilmsNumber(), regisseur.getGenres());
-
-        List<Worker> workers = workersRepository.findAll();
-//        List<Artifact> artifacts = artifactRepository.findAll();
+//        Date date = new Date();
+//        artifactRepository.createArtifact(1, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()));
 
         List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
         List<Plot> plots = plotRepository.findAll();

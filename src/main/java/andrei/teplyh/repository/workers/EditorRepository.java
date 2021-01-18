@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 public interface EditorRepository extends JpaRepository<Editor, Integer> {
     @Procedure("add_editor")
     boolean addEditor(String name, String secondName, String gender, int age, String placeOfBirth,
-                      String[] genres, String position);
+                      String position);
 
     @Procedure("add_existing_editor")
-    boolean addExistingEditor(int mainWorkerId, String[] genres, String position);
+    boolean addExistingEditor(int mainWorkerId, String position);
 
     @Procedure("delete_editor")
     boolean deleteEditor(int mainWorkerId);

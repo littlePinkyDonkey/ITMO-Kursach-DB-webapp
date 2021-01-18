@@ -12,9 +12,6 @@ public class Editor extends Worker{
     @Column(name = "MAIN_WORKER_ID")
     private int mainWorkerId;
 
-    @Column(name = "GENRES")
-    private String[] genres;
-
     @Transient
     private EditorPositions editorPosition;
 
@@ -35,13 +32,6 @@ public class Editor extends Worker{
     @Override
     public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
-    }
-
-    public String[] getGenres() {
-        return genres;
-    }
-    public void setGenres(String[] genres) {
-        this.genres = genres;
     }
 
     public EditorPositions getEditorPosition() {
