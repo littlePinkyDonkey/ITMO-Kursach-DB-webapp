@@ -21,4 +21,7 @@ public interface ColoringProcessRepository extends JpaRepository<ColoringProcess
 
     @Procedure("associate_artist_and_coloring_process")
     boolean associateArtistAndColoringProcess(int workerId, int processId);
+
+    @Procedure("associate_revision_and_coloring")
+    boolean associateRevisionAndColoring(int revisionId, int processId);
 }

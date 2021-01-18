@@ -20,4 +20,7 @@ public interface SmoothingProcessRepository extends JpaRepository<SmoothingProce
 
     @Procedure("associate_smoother_and_process")
     boolean associateSmootherAndProcess(int workerId, int processId);
+
+    @Procedure("associate_revision_and_smoothing")
+    boolean associateRevisionAndSmoothing(int revisionId, int processId);
 }

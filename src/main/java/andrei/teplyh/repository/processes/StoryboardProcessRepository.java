@@ -21,4 +21,7 @@ public interface StoryboardProcessRepository extends JpaRepository<StoryboardPro
 
     @Procedure("associate_storyboarder_and_process")
     boolean associateStoryboarderAndProcess(int workerId, int processId);
+
+    @Procedure("associate_revision_and_storyboarding")
+    boolean associateRevisionAndStoryboarding(int revisionId, int processId);
 }

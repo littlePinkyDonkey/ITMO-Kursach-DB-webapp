@@ -21,4 +21,7 @@ public interface AnimationProcessRepository extends JpaRepository<AnimationProce
 
     @Procedure("associate_artist_and_animation_process")
     boolean associateArtistAndAnimationProcess(int workerId, int processId);
+
+    @Procedure("associate_revision_and_animation")
+    boolean associateRevisionAndAnimation(int revisionId, int processId);
 }
