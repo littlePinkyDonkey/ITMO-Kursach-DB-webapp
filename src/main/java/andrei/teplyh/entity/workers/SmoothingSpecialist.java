@@ -1,7 +1,10 @@
 package andrei.teplyh.entity.workers;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import andrei.teplyh.entity.processes.SmoothingProcess;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "smoothing_specialist")
 public class SmoothingSpecialist extends Worker{
@@ -10,6 +13,14 @@ public class SmoothingSpecialist extends Worker{
 
     @Column(name = "MAIN_WORKER_ID")
     private int mainWorkerId;
+
+    @ManyToMany
+    @JoinTable(
+            name = "smoother_smoothing_process",
+            joinColumns = @JoinColumn(name = "WORKER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROCESS_ID")
+    )
+    private List<SmoothingProcess> processes = new ArrayList<>();
 
     public int getWorkerId() {
         return workerId;

@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.workers;
 
 import andrei.teplyh.entity.enums.ProducerRoles;
+import andrei.teplyh.entity.processes.AdvertisingProcess;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "producers")
 public class Producer extends Worker {
@@ -17,6 +20,14 @@ public class Producer extends Worker {
 
     @Column(name = "ROLE")
     private String roleValue;
+
+    @ManyToMany
+    @JoinTable(
+            name = "producer_advertising_process",
+            joinColumns = @JoinColumn(name = "WORKER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROCESS_ID")
+    )
+    private List<AdvertisingProcess> processes = new ArrayList<>();
 
     @Override
     public void setMainWorkerId(int mainWorkerId) {
@@ -39,6 +50,13 @@ public class Producer extends Worker {
     }
     public void setProducerRole(ProducerRoles producerRole) {
         this.producerRole = producerRole;
+    }
+
+    public List<AdvertisingProcess> getProcesses() {
+        return processes;
+    }
+    public void setProcesses(List<AdvertisingProcess> processes) {
+        this.processes = processes;
     }
 
     @PrePersist

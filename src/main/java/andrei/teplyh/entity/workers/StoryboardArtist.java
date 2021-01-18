@@ -1,6 +1,10 @@
 package andrei.teplyh.entity.workers;
 
+import andrei.teplyh.entity.processes.StoryboardProcess;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "storyboard_artists")
 public class StoryboardArtist extends Worker {
@@ -9,6 +13,14 @@ public class StoryboardArtist extends Worker {
 
     @Column(name = "MAIN_WORKER_ID")
     private int mainWorkerId;
+
+    @ManyToMany
+    @JoinTable(
+            name = "artist_storyboard_process",
+            joinColumns = @JoinColumn(name = "WORKER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROCESS_ID")
+    )
+    private List<StoryboardProcess> processes = new ArrayList<>();
 
     @Override
     public void setMainWorkerId(int mainWorkerId) {
@@ -24,6 +36,13 @@ public class StoryboardArtist extends Worker {
     }
     public void setWorkerId(int workerId) {
         this.workerId = workerId;
+    }
+
+    public List<StoryboardProcess> getProcesses() {
+        return processes;
+    }
+    public void setProcesses(List<StoryboardProcess> processes) {
+        this.processes = processes;
     }
 
     @Override

@@ -1,7 +1,10 @@
 package andrei.teplyh.entity.processes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import andrei.teplyh.entity.workers.Artist;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "animation_process")
 public class AnimationProcess extends Process {
@@ -16,6 +19,14 @@ public class AnimationProcess extends Process {
 
     @Column(name = "ANIMATION_TECHNOLOGY")
     private String animationTechnology;
+
+    @ManyToMany
+    @JoinTable(
+            name = "artist_animation_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Artist> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -45,5 +56,12 @@ public class AnimationProcess extends Process {
     }
     public void setAnimationTechnology(String animationTechnology) {
         this.animationTechnology = animationTechnology;
+    }
+
+    public List<Artist> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<Artist> workers) {
+        this.workers = workers;
     }
 }

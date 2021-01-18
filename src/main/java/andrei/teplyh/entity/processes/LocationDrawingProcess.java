@@ -1,10 +1,9 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.pivot.Location;
+import andrei.teplyh.entity.workers.Artist;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,14 @@ public class LocationDrawingProcess extends Process {
 
     @OneToMany(mappedBy = "drawingProcess")
     private List<Location> locations = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "artist_location_drawing_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Artist> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -40,5 +47,12 @@ public class LocationDrawingProcess extends Process {
     }
     public void setLocations(List<Location> locations) {
         this.locations = locations;
+    }
+
+    public List<Artist> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<Artist> workers) {
+        this.workers = workers;
     }
 }

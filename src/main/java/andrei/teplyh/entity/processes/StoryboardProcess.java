@@ -1,7 +1,10 @@
 package andrei.teplyh.entity.processes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import andrei.teplyh.entity.workers.StoryboardArtist;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "storyboard_process")
 public class StoryboardProcess extends Process {
@@ -13,6 +16,14 @@ public class StoryboardProcess extends Process {
 
     @Column(name = "FRAME_NUMBER")
     private int frameNumber;
+
+    @ManyToMany
+    @JoinTable(
+            name = "artist_storyboard_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<StoryboardArtist> artists = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -35,6 +46,13 @@ public class StoryboardProcess extends Process {
     }
     public void setFrameNumber(int frameNumber) {
         this.frameNumber = frameNumber;
+    }
+
+    public List<StoryboardArtist> getArtists() {
+        return artists;
+    }
+    public void setArtists(List<StoryboardArtist> artists) {
+        this.artists = artists;
     }
 
     @Override

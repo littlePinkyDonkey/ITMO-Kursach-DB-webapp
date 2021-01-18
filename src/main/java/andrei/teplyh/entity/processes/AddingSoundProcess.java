@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.SoundTypes;
+import andrei.teplyh.entity.workers.AudioSpecialist;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "adding_sound_process")
 public class AddingSoundProcess extends Process {
@@ -17,6 +20,14 @@ public class AddingSoundProcess extends Process {
 
     @Column(name = "SOUND_TYPE")
     private String soundValue;
+
+    @ManyToMany
+    @JoinTable(
+            name = "audio_adding_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<AudioSpecialist> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -39,6 +50,13 @@ public class AddingSoundProcess extends Process {
     }
     public void setSoundType(SoundTypes soundType) {
         this.soundType = soundType;
+    }
+
+    public List<AudioSpecialist> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<AudioSpecialist> workers) {
+        this.workers = workers;
     }
 
     @PrePersist

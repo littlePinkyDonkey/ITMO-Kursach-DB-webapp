@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.workers;
 
 import andrei.teplyh.entity.enums.RecordingActorsPositions;
+import andrei.teplyh.entity.processes.VoiceActingProcess;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "recording_actors")
 public class RecordingActor {
@@ -18,6 +21,14 @@ public class RecordingActor {
 
     @Column(name = "POSITION")
     private String actorValue;
+
+    @ManyToMany
+    @JoinTable(
+            name = "recorder_voice_acting_process",
+            joinColumns = @JoinColumn(name = "WORKER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROCESS_ID")
+    )
+    private List<VoiceActingProcess> processes = new ArrayList<>();
 
     public int getWorkerId() {
         return workerId;
@@ -38,6 +49,13 @@ public class RecordingActor {
     }
     public void setRecordingActorsPosition(RecordingActorsPositions recordingActorsPosition) {
         this.recordingActorsPosition = recordingActorsPosition;
+    }
+
+    public List<VoiceActingProcess> getProcesses() {
+        return processes;
+    }
+    public void setProcesses(List<VoiceActingProcess> processes) {
+        this.processes = processes;
     }
 
     @PrePersist

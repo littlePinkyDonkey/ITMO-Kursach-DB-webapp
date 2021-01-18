@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.InsertionLocations;
+import andrei.teplyh.entity.workers.Producer;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "advertising_process")
 public class AdvertisingProcess extends Process {
@@ -17,6 +20,14 @@ public class AdvertisingProcess extends Process {
 
     @Column(name = "INSERTION_LOCATION")
     private String insertionLocation;
+
+    @ManyToMany
+    @JoinTable(
+            name = "producer_advertising_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Producer> producers = new ArrayList<>();
 
     @Override
     public int getMainProcessId() {
@@ -39,6 +50,13 @@ public class AdvertisingProcess extends Process {
     }
     public void setLocation(InsertionLocations location) {
         this.location = location;
+    }
+
+    public List<Producer> getProducers() {
+        return producers;
+    }
+    public void setProducers(List<Producer> producers) {
+        this.producers = producers;
     }
 
     @PrePersist

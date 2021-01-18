@@ -1,10 +1,9 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.pivot.Character;
+import andrei.teplyh.entity.workers.Editor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,14 @@ public class CharacterSelectProcess extends Process {
 
     @OneToMany(mappedBy = "selectProcess")
     private List<Character> characters = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "editors_character_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Editor> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -40,5 +47,12 @@ public class CharacterSelectProcess extends Process {
     }
     public void setCharacters(List<Character> characters) {
         this.characters = characters;
+    }
+
+    public List<Editor> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<Editor> workers) {
+        this.workers = workers;
     }
 }

@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.DigitizationTypes;
+import andrei.teplyh.entity.workers.Digitizer;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "digitization_process")
 public class DigitizationProcess extends Process {
@@ -20,6 +23,14 @@ public class DigitizationProcess extends Process {
 
     @Column(name = "DIGITIZATION_TYPE")
     private String digitizationValue;
+
+    @ManyToMany
+    @JoinTable(
+            name = "digitizers_digitization_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Digitizer> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -49,6 +60,13 @@ public class DigitizationProcess extends Process {
     }
     public void setDigitizationType(DigitizationTypes digitizationType) {
         this.digitizationType = digitizationType;
+    }
+
+    public List<Digitizer> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<Digitizer> workers) {
+        this.workers = workers;
     }
 
     @PrePersist

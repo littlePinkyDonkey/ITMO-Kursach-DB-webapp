@@ -1,10 +1,9 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.pivot.Battle;
+import andrei.teplyh.entity.workers.Screenwriter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,14 @@ public class BattleDescriptionProcess extends Process {
 
     @OneToMany(mappedBy = "descriptionProcess")
     private List<Battle> battles = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "screenwriter_battle_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Screenwriter> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -33,5 +40,19 @@ public class BattleDescriptionProcess extends Process {
     @Override
     public void setMainProcessId(int mainProcessId) {
         this.mainProcessId = mainProcessId;
+    }
+
+    public List<Battle> getBattles() {
+        return battles;
+    }
+    public void setBattles(List<Battle> battles) {
+        this.battles = battles;
+    }
+
+    public List<Screenwriter> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<Screenwriter> workers) {
+        this.workers = workers;
     }
 }

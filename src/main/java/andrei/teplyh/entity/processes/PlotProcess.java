@@ -1,10 +1,10 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.pivot.Plot;
+import andrei.teplyh.entity.workers.Regisseur;
+import andrei.teplyh.entity.workers.Screenwriter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +18,22 @@ public class PlotProcess extends Process {
 
     @OneToMany(mappedBy = "plotProcess")
     private List<Plot> plots = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "regisseurs_plot_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Regisseur> regisseurs = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "screenwriter_plot_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Screenwriter> screenwriters = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -33,5 +49,26 @@ public class PlotProcess extends Process {
     @Override
     public void setMainProcessId(int mainProcessId) {
         this.mainProcessId = mainProcessId;
+    }
+
+    public List<Plot> getPlots() {
+        return plots;
+    }
+    public void setPlots(List<Plot> plots) {
+        this.plots = plots;
+    }
+
+    public List<Regisseur> getRegisseurs() {
+        return regisseurs;
+    }
+    public void setRegisseurs(List<Regisseur> regisseurs) {
+        this.regisseurs = regisseurs;
+    }
+
+    public List<Screenwriter> getScreenwriters() {
+        return screenwriters;
+    }
+    public void setScreenwriters(List<Screenwriter> screenwriters) {
+        this.screenwriters = screenwriters;
     }
 }

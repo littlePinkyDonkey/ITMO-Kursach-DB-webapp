@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.EffectLevels;
+import andrei.teplyh.entity.workers.Artist;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "adding_effect_process")
 public class AddingEffectProcess extends Process {
@@ -17,6 +20,14 @@ public class AddingEffectProcess extends Process {
 
     @Column(name = "EFFECT_LEVEL")
     private String effectValue;
+
+    @ManyToMany
+    @JoinTable(
+            name = "artist_effects_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Artist> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -39,6 +50,13 @@ public class AddingEffectProcess extends Process {
     }
     public void setEffectLevel(EffectLevels effectLevel) {
         this.effectLevel = effectLevel;
+    }
+
+    public List<Artist> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<Artist> workers) {
+        this.workers = workers;
     }
 
     @PrePersist

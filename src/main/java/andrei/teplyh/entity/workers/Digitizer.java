@@ -1,7 +1,10 @@
 package andrei.teplyh.entity.workers;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import andrei.teplyh.entity.processes.DigitizationProcess;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "digitizers")
 public class Digitizer extends Worker {
@@ -10,6 +13,14 @@ public class Digitizer extends Worker {
 
     @Column(name = "MAIN_WORKER_ID")
     private int mainWorkerId;
+
+    @ManyToMany
+    @JoinTable(
+            name = "digitizers_digitization_process",
+            joinColumns = @JoinColumn(name = "WORKER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROCESS_ID")
+    )
+    private List<DigitizationProcess> processes = new ArrayList<>();
 
     public int getWorkerId() {
         return workerId;
@@ -25,6 +36,13 @@ public class Digitizer extends Worker {
     @Override
     public void setMainWorkerId(int mainWorkerId) {
         this.mainWorkerId = mainWorkerId;
+    }
+
+    public List<DigitizationProcess> getProcesses() {
+        return processes;
+    }
+    public void setProcesses(List<DigitizationProcess> processes) {
+        this.processes = processes;
     }
 
     @Override

@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.ColoringTypes;
+import andrei.teplyh.entity.workers.Artist;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "coloring_process")
 public class ColoringProcess extends Process {
@@ -17,6 +20,14 @@ public class ColoringProcess extends Process {
 
     @Column(name = "COLORING_TYPE")
     private String coloringValue;
+
+    @ManyToMany
+    @JoinTable(
+            name = "artist_coloring_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<Artist> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -39,6 +50,13 @@ public class ColoringProcess extends Process {
     }
     public void setColoringType(ColoringTypes coloringType) {
         this.coloringType = coloringType;
+    }
+
+    public List<Artist> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<Artist> workers) {
+        this.workers = workers;
     }
 
     @PrePersist

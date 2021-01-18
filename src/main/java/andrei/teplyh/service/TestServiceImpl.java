@@ -1,19 +1,18 @@
 package andrei.teplyh.service;
 
-import andrei.teplyh.entity.enums.ArtifactTypes;
-import andrei.teplyh.entity.enums.ProducerRoles;
+import andrei.teplyh.entity.enums.*;
 import andrei.teplyh.entity.pivot.Plot;
 import andrei.teplyh.entity.processes.PlotProcess;
 import andrei.teplyh.entity.processes.Process;
-import andrei.teplyh.entity.workers.ArtDirector;
-import andrei.teplyh.entity.workers.Producer;
-import andrei.teplyh.entity.workers.Regisseur;
+import andrei.teplyh.entity.processes.StoryboardProcess;
+import andrei.teplyh.entity.workers.*;
 import andrei.teplyh.repository.ArtifactRepository;
 import andrei.teplyh.repository.UserRepository;
 import andrei.teplyh.repository.pivot.PlotRepository;
 import andrei.teplyh.repository.processes.AdvertisingProcessRepository;
 import andrei.teplyh.repository.processes.PlotProcessRepository;
 import andrei.teplyh.repository.processes.ProcessRepository;
+import andrei.teplyh.repository.processes.StoryboardProcessRepository;
 import andrei.teplyh.repository.workers.*;
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +61,9 @@ public class TestServiceImpl implements TestService {
     @Autowired
     private ArtifactRepository artifactRepository;
 
+    @Autowired
+    private StoryboardProcessRepository storyboardProcessRepository;
+
     @Override
     @Transactional
     public void showIfWorks() {
@@ -82,12 +84,18 @@ public class TestServiceImpl implements TestService {
 
 //        workersRepository.addWorker("andrey", "teplyh", "male", 20, "russia");
 //
-//        Date date = new Date();
+        Date date = new Date();
 //        artifactRepository.createArtifact(1, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()));
+
+//        storyboardArtistRepository.addExistingStoryboardArtist(1);
+//        storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
+//                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
+
+        List<Artist> artists = artistsRepository.findAll();
 
         List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
         List<Plot> plots = plotRepository.findAll();
-        System.out.println("dsadsa");
+        System.out.println("\ndsadsa");
 
 //        testRepository.test3("stan", AbilityTypes.CHATTING.getDescription());
 //        List<Test> tests =  testRepository.test2();

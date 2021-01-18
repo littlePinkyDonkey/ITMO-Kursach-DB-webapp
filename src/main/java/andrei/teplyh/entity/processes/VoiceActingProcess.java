@@ -2,6 +2,7 @@ package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.VoiceActingTypes;
 import andrei.teplyh.entity.pivot.Character;
+import andrei.teplyh.entity.workers.RecordingActor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,6 +24,14 @@ public class VoiceActingProcess extends Process {
 
     @OneToMany(mappedBy = "voiceActingProcess")
     private List<Character> characters = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "recorder_voice_acting_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<RecordingActor> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -52,6 +61,13 @@ public class VoiceActingProcess extends Process {
     }
     public void setCharacters(List<Character> characters) {
         this.characters = characters;
+    }
+
+    public List<RecordingActor> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<RecordingActor> workers) {
+        this.workers = workers;
     }
 
     @PrePersist

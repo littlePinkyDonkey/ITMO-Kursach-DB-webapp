@@ -1,7 +1,11 @@
 package andrei.teplyh.entity.workers;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import andrei.teplyh.entity.processes.BattleDescriptionProcess;
+import andrei.teplyh.entity.processes.PlotProcess;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "screenwriters")
 public class Screenwriter extends Worker {
@@ -13,6 +17,22 @@ public class Screenwriter extends Worker {
 
     @Column(name = "FILMS_NUMBER")
     private int filmsNumber;
+
+    @ManyToMany
+    @JoinTable(
+            name = "screenwriter_battle_process",
+            joinColumns = @JoinColumn(name = "WORKER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROCESS_ID")
+    )
+    private List<BattleDescriptionProcess> battleDescriptionProcesses = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "screenwriter_plot_process",
+            joinColumns = @JoinColumn(name = "WORKER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROCESS_ID")
+    )
+    private List<PlotProcess> plotProcesses = new ArrayList<>();
 
     public int getWorkerId() {
         return workerId;
@@ -35,6 +55,20 @@ public class Screenwriter extends Worker {
     }
     public void setFilmsNumber(int filmsNumber) {
         this.filmsNumber = filmsNumber;
+    }
+
+    public List<BattleDescriptionProcess> getBattleDescriptionProcesses() {
+        return battleDescriptionProcesses;
+    }
+    public void setBattleDescriptionProcesses(List<BattleDescriptionProcess> battleDescriptionProcesses) {
+        this.battleDescriptionProcesses = battleDescriptionProcesses;
+    }
+
+    public List<PlotProcess> getPlotProcesses() {
+        return plotProcesses;
+    }
+    public void setPlotProcesses(List<PlotProcess> plotProcesses) {
+        this.plotProcesses = plotProcesses;
     }
 
     @Override

@@ -1,7 +1,10 @@
 package andrei.teplyh.entity.processes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import andrei.teplyh.entity.workers.SmoothingSpecialist;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "smoothing_process")
 public class SmoothingProcess extends Process {
@@ -10,6 +13,14 @@ public class SmoothingProcess extends Process {
 
     @Column(name = "MAIN_PROCESS_ID")
     private int mainProcessId;
+
+    @ManyToMany
+    @JoinTable(
+            name = "smoother_smoothing_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<SmoothingSpecialist> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -25,5 +36,12 @@ public class SmoothingProcess extends Process {
     @Override
     public void setMainProcessId(int mainProcessId) {
         this.mainProcessId = mainProcessId;
+    }
+
+    public List<SmoothingSpecialist> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<SmoothingSpecialist> workers) {
+        this.workers = workers;
     }
 }

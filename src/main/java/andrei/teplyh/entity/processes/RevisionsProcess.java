@@ -1,8 +1,11 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.enums.RevisionTypes;
+import andrei.teplyh.entity.workers.ArtDirector;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "revisions_process")
 public class RevisionsProcess extends Process {
@@ -17,6 +20,14 @@ public class RevisionsProcess extends Process {
 
     @Column(name = "REVISION_TYPE")
     private String revisionValue;
+
+    @ManyToMany
+    @JoinTable(
+            name = "art_director_revision_process",
+            joinColumns = @JoinColumn(name = "PROCESS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "WORKER_ID")
+    )
+    private List<ArtDirector> workers = new ArrayList<>();
 
     public int getProcessId() {
         return processId;
@@ -39,6 +50,13 @@ public class RevisionsProcess extends Process {
     }
     public void setRevisionType(RevisionTypes revisionType) {
         this.revisionType = revisionType;
+    }
+
+    public List<ArtDirector> getWorkers() {
+        return workers;
+    }
+    public void setWorkers(List<ArtDirector> workers) {
+        this.workers = workers;
     }
 
     @PrePersist
