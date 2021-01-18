@@ -18,7 +18,7 @@ public class Editor extends Worker{
     @Transient
     private EditorPositions editorPosition;
 
-    @Column(name = "EDITOR_POSITIONS")
+    @Column(name = "POSITION")
     private String editorValue;
 
     public int getWorkerId() {

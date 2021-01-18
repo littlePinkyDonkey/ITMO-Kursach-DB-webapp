@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Repository
 public interface BattleDrawingProcessRepository extends JpaRepository<BattleDrawingProcess, Integer> {
     @Procedure("create_battle_drawing_process")
-    boolean createBattleDrawingProcess(int duration, Date deadlineDate, String description, String status, Date startDate);
+    boolean createBattleDrawingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_battle_drawing_process")
     boolean createExistingBattleDrawingProcess(int mainProcessId);

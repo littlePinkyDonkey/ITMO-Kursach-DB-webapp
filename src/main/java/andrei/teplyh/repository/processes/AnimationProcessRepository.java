@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Repository
 public interface AnimationProcessRepository extends JpaRepository<AnimationProcess, Integer> {
     @Procedure("create_animation_process")
-    boolean createAnimationProcess(int duration, Date deadlineDate, String description, String status, Date startDate,
+    boolean createAnimationProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                    int frameRate, String animationTechnology);
 
     @Procedure("create_existing_animation_process")

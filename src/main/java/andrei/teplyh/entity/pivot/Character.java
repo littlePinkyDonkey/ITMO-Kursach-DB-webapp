@@ -6,7 +6,7 @@ import andrei.teplyh.entity.processes.CharacterSelectProcess;
 import andrei.teplyh.entity.processes.VoiceActingProcess;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity(name = "character")
 public class Character {
@@ -46,7 +46,7 @@ public class Character {
     private int age;
 
     @Column(name = "BIRTH_DATE")
-    private Date birthDate;
+    private Timestamp birthDate;
 
     public int getCharacterId() {
         return characterId;
@@ -118,10 +118,10 @@ public class Character {
         this.age = age;
     }
 
-    public Date getBirthDate() {
+    public Timestamp getBirthDate() {
         return birthDate;
     }
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(Timestamp birthDate) {
         this.birthDate = birthDate;
     }
 }

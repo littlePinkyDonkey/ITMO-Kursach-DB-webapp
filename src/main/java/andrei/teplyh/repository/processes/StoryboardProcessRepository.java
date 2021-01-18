@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Repository
 public interface StoryboardProcessRepository extends JpaRepository<StoryboardProcess, Integer> {
     @Procedure("create_storyboard_process")
-    boolean createStoryboardprocess(int duration, Date deadlineDate, String description, String status, Date startDate,
+    boolean createStoryboardprocess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                     int frameNumber);
 
     @Procedure("create_existing_storyboard_process")
