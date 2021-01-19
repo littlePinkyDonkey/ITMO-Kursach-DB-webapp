@@ -2,7 +2,10 @@ package andrei.teplyh.entity;
 
 import andrei.teplyh.entity.workers.Worker;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "users")
 public class User {
@@ -23,12 +26,19 @@ public class User {
     @Column(name = "USER_PASSWORD")
     private String hash;
 
-    public User() {
-    }
-    public User(long userId, String password) {
-        this.userId = userId;
-        this.password = password;
-    }
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "LOGIN")
+    private String login;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID")
+    )
+    private List<Role> roles = new ArrayList<>();
 
     public String getSalt() {
         return salt;
@@ -56,6 +66,34 @@ public class User {
     }
     public void setWorker(Worker worker) {
         this.worker = worker;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
