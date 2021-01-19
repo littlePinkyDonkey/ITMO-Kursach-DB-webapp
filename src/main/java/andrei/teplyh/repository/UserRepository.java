@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Procedure("delete_account")
+    @Procedure("delete_user")
     boolean deleteUser(int mainWorkerId);
 }
