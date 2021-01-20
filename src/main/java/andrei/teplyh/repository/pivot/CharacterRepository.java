@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface CharacterRepository extends JpaRepository<Character, Integer> {
     @Procedure("create_character")
-    boolean createCharacter(int voiceActingId, int selectionId, int drawingId, int descriptionId, String name,
+    int createCharacter(int voiceActingId, int selectionId, int drawingId, int descriptionId, String name,
                             String gender, boolean protagonist, boolean positive, int age, Timestamp birthDate);
 
     @Procedure("delete_character")

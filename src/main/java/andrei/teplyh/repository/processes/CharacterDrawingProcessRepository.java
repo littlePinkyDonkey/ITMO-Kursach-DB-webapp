@@ -10,10 +10,10 @@ import java.sql.Timestamp;
 @Repository
 public interface CharacterDrawingProcessRepository extends JpaRepository<CharacterDrawingProcess, Integer> {
     @Procedure("create_character_drawing_process")
-    boolean createCharacterDrawingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createCharacterDrawingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_character_drawing_process")
-    boolean createExistingCharacterDrawingProcess(int mainProcessId);
+    int createExistingCharacterDrawingProcess(int mainProcessId);
 
     @Procedure("delete_character_drawing_process")
     boolean deleteCharacterDrawingProcess(int mainProcessId);

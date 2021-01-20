@@ -10,8 +10,11 @@ import java.sql.Timestamp;
 @Repository
 public interface ProcessRepository extends JpaRepository<Process, Long> {
     @Procedure("create_process")
-    boolean createProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("delete_process")
     boolean deleteProcess(int mainProcessId);
+
+    @Procedure("associate_artifact_and_process")
+    boolean associateArtifactAndProcess(int artifactId, int mainProcessId);
 }

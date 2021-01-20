@@ -10,11 +10,11 @@ import java.sql.Timestamp;
 @Repository
 public interface DigitizationProcessRepository extends JpaRepository<DigitizationProcess, Integer> {
     @Procedure("create_digitization_process")
-    boolean createDigitizationProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createDigitizationProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                       int sketchesNumber, String digitizationType);
 
     @Procedure("create_existing_digitization_process")
-    boolean createExistingDigitizationProcess(int mainProcessId, int sketchesNumber, String digitizationType);
+    int createExistingDigitizationProcess(int mainProcessId, int sketchesNumber, String digitizationType);
 
     @Procedure("delete_digitization_process")
     boolean deleteDigitizationProcess(int mainProcessId);

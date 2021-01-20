@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AbilityRepository extends JpaRepository<Ability, Integer> {
     @Procedure("create_abilities")
-    boolean createAbility(int descriptionId, String name, String description, String abilityType, int complexityLevel);
+    int createAbility(int descriptionId, String name, String description, String abilityType, int complexityLevel);
 
     @Procedure("delete_ability")
     boolean deleteAbility(int abilityId);

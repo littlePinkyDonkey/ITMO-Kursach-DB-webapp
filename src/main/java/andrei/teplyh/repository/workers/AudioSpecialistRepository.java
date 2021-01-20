@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AudioSpecialistRepository extends JpaRepository<AudioSpecialist, Integer> {
     @Procedure("add_audio_specialist")
-    boolean addAudioSpecialist(String name, String secondName, String gender, int age, String placeOfBirth);
+    int addAudioSpecialist(String name, String secondName, String gender, int age, String placeOfBirth);
 
     @Procedure("add_existing_audio_specialist")
-    boolean addExistingAudioSpecialist(int mainWorkerId);
+    int addExistingAudioSpecialist(int mainWorkerId);
 
     @Procedure("delete_audio_specialist")
     boolean deleteAudioSpecialist(int mainWorkerId);

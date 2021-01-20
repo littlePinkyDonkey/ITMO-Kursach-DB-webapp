@@ -10,10 +10,10 @@ import java.sql.Timestamp;
 @Repository
 public interface AbilityDescriptionProcessRepository extends JpaRepository<AbilityDescriptionProcess, Integer> {
     @Procedure("create_ability_description_process")
-    boolean createAbilityDescriptionProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createAbilityDescriptionProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_ability_description_process")
-    boolean createExistingAbilityDescriptionProcess(int mainProcessId);
+    int createExistingAbilityDescriptionProcess(int mainProcessId);
 
     @Procedure("delete_ability_description_process")
     boolean deleteAbilityDescriptionProcess(int mainProcessId);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlotRepository extends JpaRepository<Plot, Integer> {
     @Procedure("create_plot")
-    boolean createPlot(int processId, int pageNumbers, String plotType, String description, String plotName);
+    int createPlot(int processId, int pageNumbers, String plotType, String description, String plotName);
 
     @Procedure("delete_plot")
     boolean deletePlot(int plotId);

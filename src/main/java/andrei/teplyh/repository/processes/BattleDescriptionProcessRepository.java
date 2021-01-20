@@ -10,10 +10,10 @@ import java.sql.Timestamp;
 @Repository
 public interface BattleDescriptionProcessRepository extends JpaRepository<BattleDescriptionProcess, Integer> {
     @Procedure("create_battle_description_process")
-    boolean createBattleDescriptionProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createBattleDescriptionProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_battle_description_process")
-    boolean createBattleDescriptionProcess(int mainProcessId);
+    int createBattleDescriptionProcess(int mainProcessId);
 
     @Procedure("delete_battle_description_process")
     boolean deleteBattleDescriptionProcess(int mainProcessId);

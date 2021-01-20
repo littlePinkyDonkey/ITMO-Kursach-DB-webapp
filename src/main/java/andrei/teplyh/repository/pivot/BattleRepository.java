@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BattleRepository extends JpaRepository<Battle, Integer> {
     @Procedure("create_battle")
-    boolean createBattle(int descriptionId, int drawingId, float duration, String name);
+    int createBattle(int descriptionId, int drawingId, float duration, String name);
 
     @Procedure("delete_battle")
     boolean deleteBattle(int battleId);
