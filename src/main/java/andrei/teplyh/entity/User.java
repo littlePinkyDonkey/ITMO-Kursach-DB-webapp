@@ -4,6 +4,7 @@ import andrei.teplyh.entity.workers.Worker;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity(name = "users")
@@ -30,6 +31,9 @@ public class User {
 
     @Column(name = "LOGIN")
     private String login;
+
+    @Column(name = "LAST_LOG_OUT")
+    private Date lastLogOut;
 
     @ManyToMany
     @JoinTable(
@@ -86,6 +90,13 @@ public class User {
     }
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Date getLastLogOut() {
+        return lastLogOut;
+    }
+    public void setLastLogOut(Date lastLogOut) {
+        this.lastLogOut = lastLogOut;
     }
 
     public List<Role> getRoles() {

@@ -5,11 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    //TODO
     @Procedure("add_user")
-    boolean addUser();
+    boolean addUser(int mainWorkerId, String login, String password, String salt, String email, Date lastLogOut);
 
     @Procedure("delete_user")
     boolean deleteUser(int mainWorkerId);

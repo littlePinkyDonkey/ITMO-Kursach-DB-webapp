@@ -92,8 +92,8 @@ public class TestServiceImpl implements TestService {
 //        storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
 //                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
 
-        artifactRepository.createArtifact(3, ArtifactTypes.TEXT.getDescription(),
-                20, new Timestamp(date.getTime()), "a");
+        userRepository.addUser(1, "andrei", "admin","dasdsa","dsada", date);
+
         User user = userRepository.getUserByLogin("andrei");
 
         List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
