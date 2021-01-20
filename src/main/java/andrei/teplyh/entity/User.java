@@ -5,6 +5,7 @@ import andrei.teplyh.entity.workers.Worker;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+
 import java.util.List;
 
 @Entity(name = "users")
