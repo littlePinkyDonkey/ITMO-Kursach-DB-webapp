@@ -11,5 +11,5 @@ import java.util.Date;
 @Repository
 public interface ArtifactRepository extends JpaRepository<Artifact, Integer> {
     @Procedure("create_artifact")
-    boolean createArtifact(int uploadUser, String artifactType, int size, Timestamp uploadDate);
+    boolean createArtifact(int uploadUser, String artifactType, int size, Timestamp uploadDate, String filePath);
 }

@@ -1,5 +1,6 @@
 package andrei.teplyh.service;
 
+import andrei.teplyh.entity.User;
 import andrei.teplyh.entity.enums.*;
 import andrei.teplyh.entity.pivot.Plot;
 import andrei.teplyh.entity.processes.PlotProcess;
@@ -91,7 +92,9 @@ public class TestServiceImpl implements TestService {
 //        storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
 //                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
 
-        List<Artist> artists = artistsRepository.findAll();
+        artifactRepository.createArtifact(3, ArtifactTypes.TEXT.getDescription(),
+                20, new Timestamp(date.getTime()), "a");
+        User user = userRepository.getUserByLogin("andrei");
 
         List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
         List<Plot> plots = plotRepository.findAll();

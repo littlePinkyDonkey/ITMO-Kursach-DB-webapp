@@ -2,7 +2,6 @@ package andrei.teplyh.entity;
 
 import andrei.teplyh.entity.workers.Worker;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public class User {
     @Id
     @Column(name = "USER_ID")
-    private long userId;
+    private int userId;
 
     @OneToOne
     @JoinColumn(name = "MAIN_WORKER_ID")
@@ -36,7 +35,7 @@ public class User {
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "ROLE_ID")
+            inverseJoinColumns = @JoinColumn(name = "ROLE_VALUE")
     )
     private List<Role> roles = new ArrayList<>();
 
@@ -68,10 +67,10 @@ public class User {
         this.worker = worker;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

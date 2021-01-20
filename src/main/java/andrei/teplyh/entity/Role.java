@@ -5,28 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "roles")
-public class Roles {
+public class Role {
     @Id
-    @Column(name = "ROLE_ID")
-    private int roleId;
-
     @Column(name = "ROLE_VALUE")
     private String role;
 
     @ManyToMany
     @JoinTable(
             name = "users_roles",
-            joinColumns = @JoinColumn(name = "ROLE_ID"),
+            joinColumns = @JoinColumn(name = "ROLE_VALUE"),
             inverseJoinColumns = @JoinColumn(name = "USER_ID")
     )
     private List<User> users = new ArrayList<>();
-
-    public int getRoleId() {
-        return roleId;
-    }
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
 
     public String getRole() {
         return role;
