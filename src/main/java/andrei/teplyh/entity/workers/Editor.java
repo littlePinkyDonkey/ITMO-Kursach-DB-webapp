@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "editors")
-public class Editor extends Worker{
+public class Editor {
+    @Id
     @Column(name = "WORKER_ID")
     private int workerId;
 
-    @Column(name = "MAIN_WORKER_ID")
-    private int mainWorkerId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_WORKER_ID")
+    private Worker worker;
 
     @Transient
     private EditorPositions editorPosition;
@@ -36,13 +38,11 @@ public class Editor extends Worker{
         this.workerId = workerId;
     }
 
-    @Override
-    public int getMainWorkerId() {
-        return mainWorkerId;
+    public Worker getWorker() {
+        return worker;
     }
-    @Override
-    public void setMainWorkerId(int mainWorkerId) {
-        this.mainWorkerId = mainWorkerId;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
     public EditorPositions getEditorPosition() {
@@ -69,10 +69,5 @@ public class Editor extends Worker{
     public void postLoad() {
         if (editorValue != null)
             this.editorPosition = EditorPositions.of(editorValue);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s || workerId = %d || main_worker_id  =%d", super.toString(), workerId, mainWorkerId);
     }
 }

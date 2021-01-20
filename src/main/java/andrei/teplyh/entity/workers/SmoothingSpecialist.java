@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "smoothing_specialist")
-public class SmoothingSpecialist extends Worker{
+public class SmoothingSpecialist {
+    @Id
     @Column(name = "WORKER_ID")
     private int workerId;
 
-    @Column(name = "MAIN_WORKER_ID")
-    private int mainWorkerId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_WORKER_ID")
+    private Worker worker;
 
     @ManyToMany
     @JoinTable(
@@ -29,17 +31,17 @@ public class SmoothingSpecialist extends Worker{
         this.workerId = workerId;
     }
 
-    @Override
-    public int getMainWorkerId() {
-        return mainWorkerId;
+    public Worker getWorker() {
+        return worker;
     }
-    @Override
-    public void setMainWorkerId(int mainWorkerId) {
-        this.mainWorkerId = mainWorkerId;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s || workerId = %d || main_worker_id = %d", super.toString(), workerId, mainWorkerId);
+    public List<SmoothingProcess> getProcesses() {
+        return processes;
+    }
+    public void setProcesses(List<SmoothingProcess> processes) {
+        this.processes = processes;
     }
 }

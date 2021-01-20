@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "roles_designers")
-public class RolesDesigner extends Worker{
+public class RolesDesigner {
+    @Id
     @Column(name = "WORKER_ID")
     private int workerId;
 
-    @Column(name = "MAIN_WORKER_ID")
-    private int mainWorkerId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_WORKER_ID")
+    private Worker worker;
 
     @ManyToMany
     @JoinTable(
@@ -38,13 +40,11 @@ public class RolesDesigner extends Worker{
         this.workerId = workerId;
     }
 
-    @Override
-    public int getMainWorkerId() {
-        return mainWorkerId;
+    public Worker getWorker() {
+        return worker;
     }
-    @Override
-    public void setMainWorkerId(int mainWorkerId) {
-        this.mainWorkerId = mainWorkerId;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
     public List<AbilityDescriptionProcess> getAbilityDescriptionProcesses() {

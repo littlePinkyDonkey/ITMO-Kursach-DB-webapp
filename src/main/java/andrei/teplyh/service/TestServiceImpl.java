@@ -76,33 +76,40 @@ public class TestServiceImpl implements TestService {
 //        storyboardProcessRepository.deleteAll();
 //        artifactRepository.deleteAll();
 
-
-        int mainWorkerId = workersRepository.addWorker("andrei", "teplyh", "male", 20, "Russia");
-        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(mainWorkerId);
-
-        int storyboardProcessId = storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
-                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
-
-        int artifactId = artifactRepository.createArtifact(mainWorkerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
-
-        storyboardProcessRepository.associateStoryboarderAndProcess(storyboarderId, storyboardProcessId);
-
-        int userId = userRepository.addUser(mainWorkerId, "andrei270900", "admin","dasdsa","dsada", date);
-
-        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
-//        int regisseurId = regisseurRepository.addExistingRegisseur(1, 1);
+        int mainWorkerId = workersRepository.addWorker("test", "test", "test", 20, "Test");
+//        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(mainWorkerId);
+//        int regisseurId = regisseurRepository.addExistingRegisseur(mainWorkerId, 1);
 //
+//        int storyboardProcessId = storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()),
+//                "blablabla", ProcessStatuses.FINISHED.getDescription(),
+//                Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
 //        int plotProcessId = plotProcessRepository.createPlotProcess(12, new Timestamp(date.getTime()),
 //                "test", ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"));
 //
-//        plotProcessRepository.associateRegisseurAndPlotProcess(regisseurId, 1);
+//        int artifactId = artifactRepository.createArtifact(mainWorkerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
+//
+//        storyboardProcessRepository.associateStoryboarderAndProcess(storyboarderId, storyboardProcessId);
+//        plotProcessRepository.associateRegisseurAndPlotProcess(regisseurId, plotProcessId);
+//
+//        int userId = userRepository.addUser(mainWorkerId, "andrei270900", "admin","dasdsa","dsada", date);
+
+//        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
+
+//        int producerId = producerRepository.addExistingProducer(mainWorkerId, ProducerRoles.CO_PRODUCER.getDescription());
+//        int advertisingProcessId = advertisingProcessRepository.createAdvertisingProcess(100, new Timestamp(date.getTime()),
+//                "test++", ProcessStatuses.REVISION.getDescription(), Timestamp.valueOf("2010-05-10 17:57:08.8"),
+//                InsertionLocations.THE_MIDDLE.getDescription());
+//        advertisingProcessRepository.associateProducerAndProcess(producerId, advertisingProcessId);
 
         User user = userRepository.getUserByLogin("andrei270900");
 
-        List<StoryboardProcess> processes = storyboardProcessRepository.findAll();
+        List<Producer> producers = producerRepository.findAll();
+        List<Regisseur> regisseurs = regisseurRepository.findAll();
+        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
 
+        List<StoryboardProcess> processes = storyboardProcessRepository.findAll();
         List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
-        List<Plot> plots = plotRepository.findAll();
+
         System.out.println("\ndsadsa");
 
 //        testRepository.test3("stan", AbilityTypes.CHATTING.getDescription());

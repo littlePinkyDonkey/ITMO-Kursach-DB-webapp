@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "screenwriters")
-public class Screenwriter extends Worker {
+public class Screenwriter {
+    @Id
     @Column(name = "WORKER_ID")
     private int workerId;
 
-    @Column(name = "MAIN_WORKER_ID")
-    private int mainWorkerId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_WORKER_ID")
+    private Worker worker;
 
     @Column(name = "FILMS_NUMBER")
     private int filmsNumber;
@@ -41,13 +43,11 @@ public class Screenwriter extends Worker {
         this.workerId = workerId;
     }
 
-    @Override
-    public int getMainWorkerId() {
-        return mainWorkerId;
+    public Worker getWorker() {
+        return worker;
     }
-    @Override
-    public void setMainWorkerId(int mainWorkerId) {
-        this.mainWorkerId = mainWorkerId;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
     public int getFilmsNumber() {
@@ -69,10 +69,5 @@ public class Screenwriter extends Worker {
     }
     public void setPlotProcesses(List<PlotProcess> plotProcesses) {
         this.plotProcesses = plotProcesses;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s || workerId = %d || main_worker_id = %d", super.toString(), workerId, mainWorkerId);
     }
 }
