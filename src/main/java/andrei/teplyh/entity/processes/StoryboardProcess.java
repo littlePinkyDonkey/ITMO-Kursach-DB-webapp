@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "storyboard_process")
-public class StoryboardProcess extends Process {
+public class StoryboardProcess {
+    @Id
     @Column(name = "PROCESS_ID")
     private int processId;
 
-    @Column(name = "MAIN_PROCESS_ID")
-    private int mainProcessId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_PROCESS_ID")
+    private Process process;
 
     @Column(name = "FRAME_NUMBER")
     private int frameNumber;
@@ -40,15 +42,6 @@ public class StoryboardProcess extends Process {
         this.processId = processId;
     }
 
-    @Override
-    public int getMainProcessId() {
-        return mainProcessId;
-    }
-    @Override
-    public void setMainProcessId(int mainProcessId) {
-        this.mainProcessId = mainProcessId;
-    }
-
     public int getFrameNumber() {
         return frameNumber;
     }
@@ -68,14 +61,5 @@ public class StoryboardProcess extends Process {
     }
     public void setRevisionsProcesses(List<RevisionsProcess> revisionsProcesses) {
         this.revisionsProcesses = revisionsProcesses;
-    }
-
-    @Override
-    public String toString() {
-        return "StoryboardProcess{" +
-                "processId=" + processId +
-                ", mainProcessId=" + mainProcessId +
-                ", frameNumber=" + frameNumber +
-                '}';
     }
 }

@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "character_drawing_process")
-public class CharacterDrawingProcess extends Process {
+public class CharacterDrawingProcess {
+    @Id
     @Column(name = "PROCESS_ID")
     private int processId;
 
-    @Column(name = "MAIN_PROCESS_ID")
-    private int mainProcessId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_PROCESS_ID")
+    private Process process;
 
     @OneToMany(mappedBy = "drawingProcess")
     private List<Character> characters = new ArrayList<>();
@@ -31,15 +33,6 @@ public class CharacterDrawingProcess extends Process {
     }
     public void setProcessId(int processId) {
         this.processId = processId;
-    }
-
-    @Override
-    public int getMainProcessId() {
-        return mainProcessId;
-    }
-    @Override
-    public void setMainProcessId(int mainProcessId) {
-        this.mainProcessId = mainProcessId;
     }
 
     public List<Character> getCharacters() {

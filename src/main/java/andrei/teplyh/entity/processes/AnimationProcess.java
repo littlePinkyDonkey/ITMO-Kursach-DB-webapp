@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "animation_process")
-public class AnimationProcess extends Process {
+public class AnimationProcess {
+    @Id
     @Column(name = "PROCESS_ID")
     private int processId;
 
-    @Column(name = "MAIN_PROCESS_ID")
-    private int mainProcessId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_PROCESS_ID")
+    private Process process;
 
     @Column(name = "FRAME_RATE")
     private int frameRate;
@@ -41,15 +43,6 @@ public class AnimationProcess extends Process {
     }
     public void setProcessId(int processId) {
         this.processId = processId;
-    }
-
-    @Override
-    public int getMainProcessId() {
-        return mainProcessId;
-    }
-    @Override
-    public void setMainProcessId(int mainProcessId) {
-        this.mainProcessId = mainProcessId;
     }
 
     public int getFrameRate() {

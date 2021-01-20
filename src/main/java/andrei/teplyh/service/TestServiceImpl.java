@@ -76,7 +76,7 @@ public class TestServiceImpl implements TestService {
 //        storyboardProcessRepository.deleteAll();
 //        artifactRepository.deleteAll();
 
-        int mainWorkerId = workersRepository.addWorker("test", "test", "test", 20, "Test");
+        //int mainWorkerId = workersRepository.addWorker("test", "test", "test", 20, "Test");
 //        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(mainWorkerId);
 //        int regisseurId = regisseurRepository.addExistingRegisseur(mainWorkerId, 1);
 //

@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity(name = "processes")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Process {
     @Id
     @Column(name = "MAIN_PROCESS_ID")
@@ -33,6 +32,63 @@ public class Process {
 
     @Column(name = "START_DATE")
     private Timestamp startDate;
+
+    @OneToOne(mappedBy = "process")
+    private AbilityDescriptionProcess abilityDescriptionProcess;
+
+    @OneToOne(mappedBy = "process")
+    private AddingEffectProcess addingEffectProcess;
+
+    @OneToOne(mappedBy = "process")
+    private AddingSoundProcess addingSoundProcess;
+
+    @OneToOne(mappedBy = "process")
+    private AdvertisingProcess advertisingProcess;
+
+    @OneToOne(mappedBy = "process")
+    private AnimationProcess animationProcess;
+
+    @OneToOne(mappedBy = "process")
+    private BattleDrawingProcess battleDrawingProcess;
+
+    @OneToOne(mappedBy = "process")
+    private BattleDescriptionProcess battleDescriptionProcess;
+
+    @OneToOne(mappedBy = "process")
+    private CharacterDescriptionProcess characterDescriptionProcess;
+
+    @OneToOne(mappedBy = "process")
+    private CharacterDrawingProcess characterDrawingProcess;
+
+    @OneToOne(mappedBy = "process")
+    private CharacterSelectProcess characterSelectProcess;
+
+    @OneToOne(mappedBy = "process")
+    private ColoringProcess coloringProcess;
+
+    @OneToOne(mappedBy = "process")
+    private DigitizationProcess digitizationProcess;
+
+    @OneToOne(mappedBy = "process")
+    private LocationDescriptionProcess locationDescriptionProcess;
+
+    @OneToOne(mappedBy = "process")
+    private LocationDrawingProcess locationDrawingProcess;
+
+    @OneToOne(mappedBy = "process")
+    private PlotProcess plotProcess;
+
+    @OneToOne(mappedBy = "process")
+    private RevisionsProcess revisionsProcess;
+
+    @OneToOne(mappedBy = "process")
+    private SmoothingProcess smoothingProcess;
+
+    @OneToOne(mappedBy = "process")
+    private StoryboardProcess storyboardProcess;
+
+    @OneToOne(mappedBy = "process")
+    private VoiceActingProcess voiceActingProcess;
 
     @ManyToMany
     @JoinTable(
