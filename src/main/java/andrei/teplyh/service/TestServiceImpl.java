@@ -68,22 +68,6 @@ public class TestServiceImpl implements TestService {
     @Override
     @Transactional
     public void showIfWorks() {
-        //workersRepository.findAll().forEach(System.out::println);
-//        System.out.println("************************");
-//        storyboardArtistRepository.findAll().forEach(System.out::println);
-
-//        artistsRepository.findAll().forEach(System.out::println);
-        //storyboardArtistRepository.findAll().forEach(System.out::println);
-        //rolesDesignerRepository.findAll().forEach(System.out::println);
-        //producerRepository.findAll().forEach(System.out::println);
-//        userRepository.findAll().forEach(System.out::println);
-        //processRepository.findAll().forEach(System.out::println);
-//        boolean test =
-//                producerRepository.addExistingProducer(12, ProducerRoles.ASSOCIATE_PRODUCER.getDescription());
-//        System.out.println(test);
-//        advertisingProcessRepository.findAll().forEach(System.out::println);
-
-//        workersRepository.addWorker("andrey", "teplyh", "male", 20, "russia");
 //
         Date date = new Date();
 
@@ -92,21 +76,29 @@ public class TestServiceImpl implements TestService {
 //        storyboardProcessRepository.deleteAll();
 //        artifactRepository.deleteAll();
 
-//        int mainWorkerId = workersRepository.addWorker("andrei", "teplyh", "male", 20, "Russia");
-//        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(mainWorkerId);
-//
-//        int storyboardProcessId = storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
-//                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
-//
-//        int artifactId = artifactRepository.createArtifact(workerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
-//
-//        storyboardProcessRepository.associateStoryboarderAndProcess(storyboarderId, storyboardProcessId);
-//
-//        int userId = userRepository.addUser(mainWorkerId, "andrei270900", "admin","dasdsa","dsada", date);
-//
-//        User user = userRepository.getUserByLogin("andrei270900");
 
-//        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
+        int mainWorkerId = workersRepository.addWorker("andrei", "teplyh", "male", 20, "Russia");
+        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(mainWorkerId);
+
+        int storyboardProcessId = storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
+                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
+
+        int artifactId = artifactRepository.createArtifact(mainWorkerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
+
+        storyboardProcessRepository.associateStoryboarderAndProcess(storyboarderId, storyboardProcessId);
+
+        int userId = userRepository.addUser(mainWorkerId, "andrei270900", "admin","dasdsa","dsada", date);
+
+        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
+//        int regisseurId = regisseurRepository.addExistingRegisseur(1, 1);
+//
+//        int plotProcessId = plotProcessRepository.createPlotProcess(12, new Timestamp(date.getTime()),
+//                "test", ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"));
+//
+//        plotProcessRepository.associateRegisseurAndPlotProcess(regisseurId, 1);
+
+        User user = userRepository.getUserByLogin("andrei270900");
+
         List<StoryboardProcess> processes = storyboardProcessRepository.findAll();
 
         List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
