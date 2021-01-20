@@ -87,24 +87,27 @@ public class TestServiceImpl implements TestService {
 //
         Date date = new Date();
 
-        userRepository.deleteAll();
-        workersRepository.deleteAll();
-        storyboardProcessRepository.deleteAll();
-        artifactRepository.deleteAll();
+//        userRepository.deleteAll();
+//        workersRepository.deleteAll();
+//        storyboardProcessRepository.deleteAll();
+//        artifactRepository.deleteAll();
 
-        int workerId = workersRepository.addWorker("andrei", "teplyh", "male", 20, "Russia");
-        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(workerId);
+//        int mainWorkerId = workersRepository.addWorker("andrei", "teplyh", "male", 20, "Russia");
+//        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(mainWorkerId);
+//
+//        int storyboardProcessId = storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
+//                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
+//
+//        int artifactId = artifactRepository.createArtifact(workerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
+//
+//        storyboardProcessRepository.associateStoryboarderAndProcess(storyboarderId, storyboardProcessId);
+//
+//        int userId = userRepository.addUser(mainWorkerId, "andrei270900", "admin","dasdsa","dsada", date);
+//
+//        User user = userRepository.getUserByLogin("andrei270900");
 
-        storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
-                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
-
-        int artifactId = artifactRepository.createArtifact(workerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
-
-
-
-        int userId = userRepository.addUser(workerId, "andrei", "admin","dasdsa","dsada", date);
-
-        User user = userRepository.getUserByLogin("andrei");
+//        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
+        List<StoryboardProcess> processes = storyboardProcessRepository.findAll();
 
         List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
         List<Plot> plots = plotRepository.findAll();
