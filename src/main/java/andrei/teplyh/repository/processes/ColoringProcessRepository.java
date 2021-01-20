@@ -10,11 +10,11 @@ import java.sql.Timestamp;
 @Repository
 public interface ColoringProcessRepository extends JpaRepository<ColoringProcess, Integer> {
     @Procedure("create_coloring_process")
-    boolean createColoringProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createColoringProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                   String coloringType);
 
     @Procedure("create_existing_coloring_process")
-    boolean createExistingColoringProcess(int mainProcessId, String coloringType);
+    int createExistingColoringProcess(int mainProcessId, String coloringType);
 
     @Procedure("delete_coloring_process")
     boolean deleteColoringProcess(int mainProcessId);

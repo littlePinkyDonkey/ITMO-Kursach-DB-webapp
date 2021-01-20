@@ -10,11 +10,11 @@ import java.sql.Timestamp;
 @Repository
 public interface AnimationProcessRepository extends JpaRepository<AnimationProcess, Integer> {
     @Procedure("create_animation_process")
-    boolean createAnimationProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createAnimationProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                    int frameRate, String animationTechnology);
 
     @Procedure("create_existing_animation_process")
-    boolean createExistingAnimationProcess(int mainProcessId, int frameRate, String animationTechnology);
+    int createExistingAnimationProcess(int mainProcessId, int frameRate, String animationTechnology);
 
     @Procedure("delete_animation_process")
     boolean deleteAnimationProcess(int mainProcessId);

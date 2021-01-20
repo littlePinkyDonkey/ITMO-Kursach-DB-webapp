@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Integer> {
     @Procedure("create_events")
-    boolean createEvent(String description, int importanceLevel, String eventName);
+    int createEvent(String description, int importanceLevel, String eventName);
 
     @Procedure("delete_events")
     boolean deleteEvent(int eventId);

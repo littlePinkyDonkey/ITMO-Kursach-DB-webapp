@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Integer> {
     @Procedure("create_locations")
-    boolean createLocation(int descriptionId, int drawingId, int area, String locationType, boolean forBattle, String name);
+    int createLocation(int descriptionId, int drawingId, int area, String locationType, boolean forBattle, String name);
 
     @Procedure("delete_locations")
     boolean deleteLocation(int locationId);

@@ -86,13 +86,23 @@ public class TestServiceImpl implements TestService {
 //        workersRepository.addWorker("andrey", "teplyh", "male", 20, "russia");
 //
         Date date = new Date();
-//        artifactRepository.createArtifact(1, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()));
 
-//        storyboardArtistRepository.addExistingStoryboardArtist(1);
-//        storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
-//                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
+        userRepository.deleteAll();
+        workersRepository.deleteAll();
+        storyboardProcessRepository.deleteAll();
+        artifactRepository.deleteAll();
 
-        userRepository.addUser(1, "andrei", "admin","dasdsa","dsada", date);
+        int workerId = workersRepository.addWorker("andrei", "teplyh", "male", 20, "Russia");
+        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(workerId);
+
+        storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()), "blablabla",
+                ProcessStatuses.FINISHED.getDescription(), Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
+
+        int artifactId = artifactRepository.createArtifact(workerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
+
+
+
+        int userId = userRepository.addUser(workerId, "andrei", "admin","dasdsa","dsada", date);
 
         User user = userRepository.getUserByLogin("andrei");
 

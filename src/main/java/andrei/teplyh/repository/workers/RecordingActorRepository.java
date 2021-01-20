@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RecordingActorRepository extends JpaRepository<RecordingActor, Integer> {
     @Procedure("add_recording_actor")
-    boolean addRecordingActor(String name, String secondName, String gender, int age, String placeOfBirth,
+    int addRecordingActor(String name, String secondName, String gender, int age, String placeOfBirth,
                               String position);
 
     @Procedure("add_existing_recording_actor")
-    boolean addExistingRecordingActor(int mainWorkerId, String position);
+    int addExistingRecordingActor(int mainWorkerId, String position);
 
     @Procedure("delete_recording_actor")
     boolean deleteRecordingActor(int mainWorkerId);

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ArtistsRepository extends JpaRepository<Artist, Integer> {
     @Procedure("add_artist")
-    boolean addArtist(String name, String secondName, String gender, int age, String placeOfBirth,
+    int addArtist(String name, String secondName, String gender, int age, String placeOfBirth,
                       String artistType, String usingTechnology);
 
     @Procedure("add_existing_artist")
-    boolean addExistingArtist(int mainWorkerId, String artistType, String usingTechnology);
+    int addExistingArtist(int mainWorkerId, String artistType, String usingTechnology);
 
     @Procedure("delete_artist")
     boolean deleteArtist(int mainWorkerId);
