@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "workers")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Worker {
     @Id
     @Column(name = "MAIN_WORKER_ID")
@@ -27,6 +26,42 @@ public class Worker {
 
     @Column(name = "SECOND_NAME")
     private String secondName;
+
+    @OneToOne(mappedBy = "worker")
+    private ArtDirector artDirector;
+
+    @OneToOne(mappedBy = "worker")
+    private Artist artist;
+
+    @OneToOne(mappedBy = "worker")
+    private AudioSpecialist audioSpecialist;
+
+    @OneToOne(mappedBy = "worker")
+    private Digitizer digitizer;
+
+    @OneToOne(mappedBy = "worker")
+    private Editor editor;
+
+    @OneToOne(mappedBy = "worker")
+    private Producer producer;
+
+    @OneToOne(mappedBy = "worker")
+    private RecordingActor recordingActor;
+
+    @OneToOne(mappedBy = "worker")
+    private Regisseur regisseur;
+
+    @OneToOne(mappedBy = "worker")
+    private RolesDesigner rolesDesigner;
+
+    @OneToOne(mappedBy = "worker")
+    private Screenwriter screenwriter;
+
+    @OneToOne(mappedBy = "worker")
+    private SmoothingSpecialist smoothingSpecialist;
+
+    @OneToOne(mappedBy = "worker")
+    private StoryboardArtist storyboardArtist;
 
     @OneToMany(mappedBy = "worker")
     private List<Artifact> artifacts = new ArrayList<>();

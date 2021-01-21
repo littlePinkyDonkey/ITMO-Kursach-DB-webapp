@@ -68,6 +68,50 @@ public class TestServiceImpl implements TestService {
     @Override
     @Transactional
     public void showIfWorks() {
+//        userRepository.deleteAll();
+//        workersRepository.deleteAll();
+//        storyboardProcessRepository.deleteAll();
+//        artifactRepository.deleteAll();
 
+//        int mainWorkerId = workersRepository.addWorker("andrei", "teplyh", "male", 20, "Test");
+//        int storyboarderId = storyboardArtistRepository.addExistingStoryboardArtist(mainWorkerId);
+//        int regisseurId = regisseurRepository.addExistingRegisseur(mainWorkerId, 1);
+
+//        int storyboardProcessId = storyboardProcessRepository.createStoryboardProcess(20, new Timestamp(date.getTime()),
+//                "blablabla", ProcessStatuses.FINISHED.getDescription(),
+//                Timestamp.valueOf("2012-04-10 17:57:08.8"), 20);
+//        int plotProcessId = plotProcessRepository.createPlotProcess(50, new Timestamp(date.getTime()),
+//                "another plot process", ProcessStatuses.IN_PROCESS.getDescription(), Timestamp.valueOf("2010-04-10 17:57:08.8"));
+//
+//        int artifactId = artifactRepository.createArtifact(mainWorkerId, ArtifactTypes.TEXT.getDescription(), 20, new Timestamp(date.getTime()), "~/");
+//
+//        storyboardProcessRepository.associateStoryboarderAndProcess(storyboarderId, storyboardProcessId);
+//        plotProcessRepository.associateRegisseurAndPlotProcess(2, plotProcessId);
+//
+//        int userId = userRepository.addUser(mainWorkerId, "andrei270900", "admin","dasdsa","dsada", date);
+
+//        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
+
+//        int producerId = producerRepository.addExistingProducer(mainWorkerId, ProducerRoles.CO_PRODUCER.getDescription());
+//        int advertisingProcessId = advertisingProcessRepository.createAdvertisingProcess(100, new Timestamp(date.getTime()),
+//                "test++", ProcessStatuses.REVISION.getDescription(), Timestamp.valueOf("2010-05-10 17:57:08.8"),
+//                InsertionLocations.THE_MIDDLE.getDescription());
+//        advertisingProcessRepository.associateProducerAndProcess(producerId, advertisingProcessId);
+
+//        User user = userRepository.getUserByLogin("andrei270900");
+
+//        List<Producer> producers = producerRepository.findAll();
+//        List<Regisseur> regisseurs = regisseurRepository.findAll();
+//        List<StoryboardArtist> artists = storyboardArtistRepository.findAll();
+        List<Worker> workers = workersRepository.findAll();
+
+        List<StoryboardProcess> processes = storyboardProcessRepository.findAll();
+        List<PlotProcess> plotProcesses = plotProcessRepository.findAll();
+
+        System.out.println("\ndsadsa");
+
+//        testRepository.test3("stan", AbilityTypes.CHATTING.getDescription());
+//        List<Test> tests =  testRepository.test2();
+//        tests.forEach(System.out::println);
     }
 }

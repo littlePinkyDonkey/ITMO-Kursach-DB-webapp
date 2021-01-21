@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "artists")
-public class Artist extends Worker {
+public class Artist {
+    @Id
     @Column(name = "WORKER_ID")
     private int workerId;
 
-    @Column(name = "MAIN_WORKER_ID")
-    private int mainWorkerId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_WORKER_ID")
+    private Worker worker;
 
     @Transient
     private ArtistTypes artistType;
@@ -83,6 +85,13 @@ public class Artist extends Worker {
         this.workerId = workerId;
     }
 
+    public Worker getWorker() {
+        return worker;
+    }
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
     public ArtistTypes getArtistType() {
         return artistType;
     }
@@ -102,15 +111,6 @@ public class Artist extends Worker {
     }
     public void setUsingTechnology(UsingTechnologies usingTechnology) {
         this.usingTechnology = usingTechnology;
-    }
-
-    @Override
-    public int getMainWorkerId() {
-        return mainWorkerId;
-    }
-    @Override
-    public void setMainWorkerId(int mainWorkerId) {
-        this.mainWorkerId = mainWorkerId;
     }
 
     public List<ColoringProcess> getColoringProcesses() {
@@ -169,11 +169,5 @@ public class Artist extends Worker {
             this.artistType = ArtistTypes.of(artistValue);
             this.usingTechnology = UsingTechnologies.of(technologyValue);
         }
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s || workerId = %d || main_worker_id  =%d || artist_type = %s || artist_id = %d || using_technology = %s",
-                super.toString(), workerId, mainWorkerId, artistValue, workerId, technologyValue);
     }
 }

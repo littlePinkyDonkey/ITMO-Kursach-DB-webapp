@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "digitizers")
-public class Digitizer extends Worker {
+public class Digitizer {
+    @Id
     @Column(name = "WORKER_ID")
     private int workerId;
 
-    @Column(name = "MAIN_WORKER_ID")
-    private int mainWorkerId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_WORKER_ID")
+    private Worker worker;
 
     @ManyToMany
     @JoinTable(
@@ -29,13 +31,11 @@ public class Digitizer extends Worker {
         this.workerId = workerId;
     }
 
-    @Override
-    public int getMainWorkerId() {
-        return mainWorkerId;
+    public Worker getWorker() {
+        return worker;
     }
-    @Override
-    public void setMainWorkerId(int mainWorkerId) {
-        this.mainWorkerId = mainWorkerId;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
     public List<DigitizationProcess> getProcesses() {
@@ -43,10 +43,5 @@ public class Digitizer extends Worker {
     }
     public void setProcesses(List<DigitizationProcess> processes) {
         this.processes = processes;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s || workerId = %d || main_worker_id  =%d", super.toString(), workerId, mainWorkerId);
     }
 }

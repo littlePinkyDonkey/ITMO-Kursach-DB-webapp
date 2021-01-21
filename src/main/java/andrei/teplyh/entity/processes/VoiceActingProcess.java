@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "voice_acting_process")
-public class VoiceActingProcess extends Process {
+public class VoiceActingProcess {
+    @Id
     @Column(name = "PROCESS_ID")
     private int processId;
 
-    @Column(name = "MAIN_PROCESS_ID")
-    private int mainProcessId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_PROCESS_ID")
+    private Process process;
 
     @Transient
     private VoiceActingTypes voiceActingType;
@@ -38,15 +40,6 @@ public class VoiceActingProcess extends Process {
     }
     public void setProcessId(int processId) {
         this.processId = processId;
-    }
-
-    @Override
-    public int getMainProcessId() {
-        return mainProcessId;
-    }
-    @Override
-    public void setMainProcessId(int mainProcessId) {
-        this.mainProcessId = mainProcessId;
     }
 
     public VoiceActingTypes getVoiceActingType() {

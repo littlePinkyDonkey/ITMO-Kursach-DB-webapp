@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "adding_effect_process")
-public class AddingEffectProcess extends Process {
+public class AddingEffectProcess {
+    @Id
     @Column(name = "PROCESS_ID")
     private int processId;
 
-    @Column(name = "MAIN_PROCESS_ID")
-    private int mainProcessId;
+    @OneToOne
+    @JoinColumn(name = "MAIN_PROCESS_ID")
+    private Process process;
 
     @Transient
     private EffectLevels effectLevel;
@@ -42,15 +44,6 @@ public class AddingEffectProcess extends Process {
     }
     public void setProcessId(int processId) {
         this.processId = processId;
-    }
-
-    @Override
-    public int getMainProcessId() {
-        return mainProcessId;
-    }
-    @Override
-    public void setMainProcessId(int mainProcessId) {
-        this.mainProcessId = mainProcessId;
     }
 
     public EffectLevels getEffectLevel() {
