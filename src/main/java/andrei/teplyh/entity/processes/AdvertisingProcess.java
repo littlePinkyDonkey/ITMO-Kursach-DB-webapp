@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity(name = "advertising_process")
 public class AdvertisingProcess {
+    @Id
     @Column(name = "PROCESS_ID")
     private int processId;
 
