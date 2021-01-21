@@ -21,5 +21,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Procedure("delete_users_role")
     boolean deleteUsersRole(String roleValue);
 
+    @Procedure("update_last_log_out")
+    boolean updateLastLogOut(String login, Date lastLogOut);
+
     User getUserByLogin(String login);
 }
