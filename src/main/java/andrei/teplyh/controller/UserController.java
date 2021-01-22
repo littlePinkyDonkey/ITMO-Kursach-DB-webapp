@@ -25,26 +25,17 @@ import java.util.Map;
 @RestController
 @RequestMapping("/home")
 public class UserController {
-    private final AuthenticationManager authenticationManager;
-
-    private final JwtTokenProvider jwtTokenProvider;
-
-    private final UserService userService;
-
-    private final RolesRepository rolesRepository;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    public UserController(
-            AuthenticationManager authenticationManager,
-            JwtTokenProvider jwtTokenProvider,
-            UserService userService,
-            RolesRepository rolesRepository
-    ) {
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenProvider = jwtTokenProvider;
-        this.userService = userService;
-        this.rolesRepository = rolesRepository;
-    }
+    private JwtTokenProvider jwtTokenProvider;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private RolesRepository rolesRepository;
 
     @PostMapping(path = "/auth", produces = "application/json")
     public ResponseEntity signIn(@RequestBody AuthUserDTO authUserDTO) {
