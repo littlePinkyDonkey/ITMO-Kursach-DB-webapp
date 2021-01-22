@@ -15,6 +15,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private final RolesRepository rolesRepository;
 
     private final WorkersRepository workersRepository;
+
     @Autowired
     public RegistrationServiceImpl(
             UserService userService,

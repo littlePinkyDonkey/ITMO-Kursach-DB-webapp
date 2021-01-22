@@ -5,5 +5,5 @@ import andrei.teplyh.dto.AuthUserDTO;
 import java.util.Map;
 
 public interface AuthenticationService {
-    Map<String, String> singIn(AuthUserDTO authUserDTO);
+    Map<String, Object> singIn(AuthUserDTO authUserDTO);
 }

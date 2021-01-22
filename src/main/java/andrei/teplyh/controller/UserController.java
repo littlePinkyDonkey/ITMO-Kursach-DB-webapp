@@ -38,7 +38,7 @@ public class UserController {
     @PostMapping(path = "/login", produces = "application/json")
     public ResponseEntity signIn(@RequestBody AuthUserDTO authUserDTO) {
         try {
-            Map<String, String> response = authenticationService.singIn(authUserDTO);
+            Map<String, Object> response = authenticationService.singIn(authUserDTO);
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password");
