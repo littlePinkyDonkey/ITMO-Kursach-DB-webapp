@@ -13,11 +13,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -75,5 +73,16 @@ public class UserController {
         rolesRepository.addRoleToUser(userId, UserRoles.STORYBOARD_ARTIST.getDescription());
         rolesRepository.addRoleToUser(userId, UserRoles.REGISSEUR.getDescription());
         return null;
+    }
+
+    @PostMapping(path = "/test")
+    public String test(@RequestAttribute(name = "login") String login) {
+        System.out.println(login);
+        return login;
+    }
+
+    @PostMapping(path = "/test2")
+    public String test() {
+        return "asd";
     }
 }

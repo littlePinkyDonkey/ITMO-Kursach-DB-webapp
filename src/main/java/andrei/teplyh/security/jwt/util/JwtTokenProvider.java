@@ -52,7 +52,7 @@ public class JwtTokenProvider {
         claims.put("roles", getRoleNames(roles));
 
         Date now = new Date();
-        Date validity = new Date(now.getTime() + lifetimeInMilliseconds);
+        Date validity = new Date(now.getTime() + lifetimeInMilliseconds * 24 * 7);
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -73,7 +73,7 @@ public class JwtTokenProvider {
 
     public String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader(requestHeader);
-        if (bearerToken != null && bearerToken.startsWith("Bearer_")) {
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
         return null;
