@@ -1,5 +1,6 @@
 package andrei.teplyh.service.impl;
 
+import andrei.teplyh.entity.enums.UserRoles;
 import andrei.teplyh.repository.workers.*;
 import andrei.teplyh.service.WorkerDeterminationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class WorkerDeterminationServiceImpl implements WorkerDeterminationServic
     @Override
     public void determinateWorker(List<String> roles) {
         for (String role : roles) {
-
+            
         }
     }
 }

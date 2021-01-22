@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/api")
 public class UserController {
     private final AuthenticationService authenticationService;
 
