@@ -1,6 +1,6 @@
 package andrei.teplyh.dto;
 
-public class UserDTO {
+public class AuthUserDTO {
     private String login;
 
     private String password;

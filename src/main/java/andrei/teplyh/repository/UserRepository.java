@@ -10,7 +10,7 @@ import java.util.Date;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     @Procedure("add_user")
-    int addUser(int mainWorkerId, String login, String password, String salt, String email, Date lastLogOut);
+    int addUser(int mainWorkerId, String login, String password, String email, String avatarFilePath, Date lastLogOut);
 
     @Procedure("delete_user")
     boolean deleteUser(int mainWorkerId);
