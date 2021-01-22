@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SmoothingSpecialistRepository extends JpaRepository<SmoothingSpecialist, Integer> {
     @Procedure("add_smoothing_specialist")
-    int addSmoothingSpecialist(String name, String secondName, String gender, int age, String placeOfBirth);
+    int addSmoothingSpecialist(String name, String secondName, String gender, String placeOfBirth);
 
     @Procedure("add_existing_smoothing_specialist")
     int addExistingSmoothingSpecialist(int mainWorkerId);

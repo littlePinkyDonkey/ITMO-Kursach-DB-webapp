@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AudioSpecialistRepository extends JpaRepository<AudioSpecialist, Integer> {
     @Procedure("add_audio_specialist")
-    int addAudioSpecialist(String name, String secondName, String gender, int age, String placeOfBirth);
+    int addAudioSpecialist(String name, String secondName, String gender, String placeOfBirth);
 
     @Procedure("add_existing_audio_specialist")
     int addExistingAudioSpecialist(int mainWorkerId);

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DigitizerRepository extends JpaRepository<Digitizer, Integer> {
     @Procedure("add_digitizer")
-    int addDigitizer(String name, String secondName, String gender, int age, String placeOfBirth);
+    int addDigitizer(String name, String secondName, String gender, String placeOfBirth);
 
     @Procedure("add_existing_digitizer")
     int addExistingDigitizer(int mainWorkerId);

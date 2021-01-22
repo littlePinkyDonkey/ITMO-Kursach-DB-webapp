@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RolesDesignerRepository extends JpaRepository<RolesDesigner, Integer> {
     @Procedure("add_roles_designer")
-    int addRolesDesigner(String name, String secondName, String gender, int age, String placeOfBirth);
+    int addRolesDesigner(String name, String secondName, String gender, String placeOfBirth);
 
     @Procedure("add_existing_roles_designer")
     int addExistingRolesDesigner(int mainWorkerId);

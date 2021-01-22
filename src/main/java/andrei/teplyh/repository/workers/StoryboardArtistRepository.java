@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StoryboardArtistRepository extends JpaRepository<StoryboardArtist, Integer> {
     @Procedure("add_storyboard_artist")
-    int addStoryboardArtist(String name, String secondName, String gender, int age, String placeOfBirth);
+    int addStoryboardArtist(String name, String secondName, String gender, String placeOfBirth);
 
     @Procedure("add_existing_storyboard_artist")
     int addExistingStoryboardArtist(int mainWorkerId);

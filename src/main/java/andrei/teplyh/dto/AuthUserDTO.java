@@ -2,7 +2,6 @@ package andrei.teplyh.dto;
 
 public class AuthUserDTO {
     private String login;
-
     private String password;
 
     public String getLogin() {

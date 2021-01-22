@@ -18,9 +18,6 @@ public class Worker {
     @Column(name = "GENDER")
     private String gender;
 
-    @Column(name = "AGE")
-    private int age;
-
     @Column(name = "PLACE_OF_BIRTH")
     private String birthPlace;
 
@@ -87,13 +84,6 @@ public class Worker {
         this.gender = gender;
     }
 
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getBirthPlace() {
         return birthPlace;
     }
@@ -117,7 +107,7 @@ public class Worker {
 
     @Override
     public String toString() {
-        return String.format("name = %s | gender = %s | age = %d | birthPlace = %s | secondName = %s",
-                name, gender, age, birthPlace, secondName);
+        return String.format("name = %s | gender = %s | birthPlace = %s | secondName = %s",
+                name, gender, birthPlace, secondName);
     }
 }

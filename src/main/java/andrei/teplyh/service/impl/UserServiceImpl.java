@@ -1,6 +1,6 @@
 package andrei.teplyh.service.impl;
 
-import andrei.teplyh.dto.RegistUserDTO;
+import andrei.teplyh.dto.RegistrationUserDTO;
 import andrei.teplyh.entity.User;
 import andrei.teplyh.repository.RolesRepository;
 import andrei.teplyh.repository.UserRepository;
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public int registerUser(RegistUserDTO user) {
+    public int registerUser(RegistrationUserDTO user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.addUser(
                 user.getWorkerId(),

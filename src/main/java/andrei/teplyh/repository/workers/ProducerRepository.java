@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProducerRepository extends JpaRepository<Producer, Integer> {
     @Procedure("add_producer")
-    int addProducer(String name, String secondName, String gender, int age, String placeOfBirth, String role);
+    int addProducer(String name, String secondName, String gender, String placeOfBirth, String role);
 
     @Procedure("add_existing_producer")
     int addExistingProducer(int mainWorkerId, String role);

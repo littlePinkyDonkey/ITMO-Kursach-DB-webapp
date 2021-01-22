@@ -1,12 +1,12 @@
 package andrei.teplyh.service;
 
-import andrei.teplyh.dto.RegistUserDTO;
+import andrei.teplyh.dto.RegistrationUserDTO;
 import andrei.teplyh.entity.User;
 
 import java.util.List;
 
 public interface UserService {
-    int registerUser(RegistUserDTO user);
+    int registerUser(RegistrationUserDTO user);
 
     User findUserByLogin(String login);
 

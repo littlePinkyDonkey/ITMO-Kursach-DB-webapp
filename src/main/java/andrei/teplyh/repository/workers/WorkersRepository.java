@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WorkersRepository extends JpaRepository<Worker, Integer> {
     @Procedure("add_worker")
-    int addWorker(String name, String secondName, String gender, int age, String placeOfBirth);
+    int addWorker(String name, String secondName, String gender, String placeOfBirth);
 
     @Procedure("delete_worker")
     boolean deleteWorker(int mainWorkerId);

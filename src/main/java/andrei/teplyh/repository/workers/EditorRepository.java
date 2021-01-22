@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EditorRepository extends JpaRepository<Editor, Integer> {
     @Procedure("add_editor")
-    int addEditor(String name, String secondName, String gender, int age, String placeOfBirth,
+    int addEditor(String name, String secondName, String gender, String placeOfBirth,
                       String position);
 
     @Procedure("add_existing_editor")
