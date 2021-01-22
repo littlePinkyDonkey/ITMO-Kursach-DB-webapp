@@ -41,6 +41,14 @@ public class User {
     )
     private List<Role> roles = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "users_products",
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID")
+    )
+    private List<Product> products = new ArrayList<>();
+
     public String getPassword() {
         return password;
     }
@@ -95,6 +103,13 @@ public class User {
     }
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override

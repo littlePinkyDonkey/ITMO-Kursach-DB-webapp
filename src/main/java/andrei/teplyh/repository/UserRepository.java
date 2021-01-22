@@ -24,5 +24,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Procedure("update_last_log_out")
     boolean updateLastLogOut(String login, Date lastLogOut);
 
+    @Procedure("associate_product_and_user")
+    boolean associateProductAndUser(int productId, int userId);
+
     User getUserByLogin(String login);
 }

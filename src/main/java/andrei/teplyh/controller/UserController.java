@@ -2,6 +2,7 @@ package andrei.teplyh.controller;
 
 import andrei.teplyh.dto.AuthUserDTO;
 import andrei.teplyh.dto.RegistUserDTO;
+import andrei.teplyh.entity.Product;
 import andrei.teplyh.entity.User;
 import andrei.teplyh.entity.enums.UserRoles;
 import andrei.teplyh.repository.RolesRepository;
@@ -18,6 +19,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
