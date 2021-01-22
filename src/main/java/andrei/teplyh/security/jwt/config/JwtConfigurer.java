@@ -2,7 +2,6 @@ package andrei.teplyh.security.jwt.config;
 
 import andrei.teplyh.security.jwt.filter.JwtTokenFilter;
 import andrei.teplyh.security.jwt.util.JwtTokenProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;
