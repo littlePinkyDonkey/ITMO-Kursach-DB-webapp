@@ -3,6 +3,7 @@ package andrei.teplyh.controller;
 import andrei.teplyh.dto.AuthUserDTO;
 import andrei.teplyh.dto.RegistrationUserDTO;
 import andrei.teplyh.entity.User;
+import andrei.teplyh.entity.enums.UserRoles;
 import andrei.teplyh.exceptions.UserAlreadyExistsException;
 import andrei.teplyh.repository.RolesRepository;
 import andrei.teplyh.repository.workers.WorkersRepository;
@@ -54,5 +55,10 @@ public class UserController {
         } catch (UserAlreadyExistsException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping(path = "/roles", produces = "application/json")
+    public ResponseEntity getRoles() {
+        return ResponseEntity.ok().body(UserRoles.getAllRoles());
     }
 }

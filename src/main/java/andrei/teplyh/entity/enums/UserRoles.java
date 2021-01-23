@@ -3,6 +3,7 @@ package andrei.teplyh.entity.enums;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum UserRoles {
@@ -179,6 +180,12 @@ public enum UserRoles {
 
     public List<String> getAvailableProcesses() {
         return availableProcesses;
+    }
+
+    public static List<String> getAllRoles() {
+        return Stream.of(UserRoles.values())
+                .map(UserRoles::getDescription)
+                .collect(Collectors.toList());
     }
 
     public static UserRoles of(String value) {
