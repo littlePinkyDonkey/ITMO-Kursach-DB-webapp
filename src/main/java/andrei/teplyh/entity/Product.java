@@ -1,5 +1,7 @@
 package andrei.teplyh.entity;
 
+import andrei.teplyh.entity.processes.Process;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,16 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "USER_ID")
     )
     private List<User> users = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product")
+    private List<Process> processes = new ArrayList<>();
+
+    public List<Process> getProcesses() {
+        return processes;
+    }
+    public void setProcesses(List<Process> processes) {
+        this.processes = processes;
+    }
 
     public int getProductId() {
         return productId;

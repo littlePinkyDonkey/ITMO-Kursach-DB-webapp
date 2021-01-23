@@ -1,6 +1,7 @@
 package andrei.teplyh.entity.processes;
 
 import andrei.teplyh.entity.Artifact;
+import andrei.teplyh.entity.Product;
 import andrei.teplyh.entity.enums.ProcessStatuses;
 
 import javax.persistence.*;
@@ -97,6 +98,150 @@ public class Process {
             inverseJoinColumns = @JoinColumn(name = "ARTIFACT_ID")
     )
     private List<Artifact> artifacts = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    private Product product;
+
+    public AbilityDescriptionProcess getAbilityDescriptionProcess() {
+        return abilityDescriptionProcess;
+    }
+    public void setAbilityDescriptionProcess(AbilityDescriptionProcess abilityDescriptionProcess) {
+        this.abilityDescriptionProcess = abilityDescriptionProcess;
+    }
+
+    public AddingEffectProcess getAddingEffectProcess() {
+        return addingEffectProcess;
+    }
+    public void setAddingEffectProcess(AddingEffectProcess addingEffectProcess) {
+        this.addingEffectProcess = addingEffectProcess;
+    }
+
+    public AddingSoundProcess getAddingSoundProcess() {
+        return addingSoundProcess;
+    }
+    public void setAddingSoundProcess(AddingSoundProcess addingSoundProcess) {
+        this.addingSoundProcess = addingSoundProcess;
+    }
+
+    public AdvertisingProcess getAdvertisingProcess() {
+        return advertisingProcess;
+    }
+    public void setAdvertisingProcess(AdvertisingProcess advertisingProcess) {
+        this.advertisingProcess = advertisingProcess;
+    }
+
+    public AnimationProcess getAnimationProcess() {
+        return animationProcess;
+    }
+    public void setAnimationProcess(AnimationProcess animationProcess) {
+        this.animationProcess = animationProcess;
+    }
+
+    public BattleDrawingProcess getBattleDrawingProcess() {
+        return battleDrawingProcess;
+    }
+    public void setBattleDrawingProcess(BattleDrawingProcess battleDrawingProcess) {
+        this.battleDrawingProcess = battleDrawingProcess;
+    }
+
+    public BattleDescriptionProcess getBattleDescriptionProcess() {
+        return battleDescriptionProcess;
+    }
+    public void setBattleDescriptionProcess(BattleDescriptionProcess battleDescriptionProcess) {
+        this.battleDescriptionProcess = battleDescriptionProcess;
+    }
+
+    public CharacterDescriptionProcess getCharacterDescriptionProcess() {
+        return characterDescriptionProcess;
+    }
+    public void setCharacterDescriptionProcess(CharacterDescriptionProcess characterDescriptionProcess) {
+        this.characterDescriptionProcess = characterDescriptionProcess;
+    }
+
+    public CharacterDrawingProcess getCharacterDrawingProcess() {
+        return characterDrawingProcess;
+    }
+    public void setCharacterDrawingProcess(CharacterDrawingProcess characterDrawingProcess) {
+        this.characterDrawingProcess = characterDrawingProcess;
+    }
+
+    public CharacterSelectProcess getCharacterSelectProcess() {
+        return characterSelectProcess;
+    }
+    public void setCharacterSelectProcess(CharacterSelectProcess characterSelectProcess) {
+        this.characterSelectProcess = characterSelectProcess;
+    }
+
+    public ColoringProcess getColoringProcess() {
+        return coloringProcess;
+    }
+    public void setColoringProcess(ColoringProcess coloringProcess) {
+        this.coloringProcess = coloringProcess;
+    }
+
+    public DigitizationProcess getDigitizationProcess() {
+        return digitizationProcess;
+    }
+    public void setDigitizationProcess(DigitizationProcess digitizationProcess) {
+        this.digitizationProcess = digitizationProcess;
+    }
+
+    public LocationDescriptionProcess getLocationDescriptionProcess() {
+        return locationDescriptionProcess;
+    }
+    public void setLocationDescriptionProcess(LocationDescriptionProcess locationDescriptionProcess) {
+        this.locationDescriptionProcess = locationDescriptionProcess;
+    }
+
+    public LocationDrawingProcess getLocationDrawingProcess() {
+        return locationDrawingProcess;
+    }
+    public void setLocationDrawingProcess(LocationDrawingProcess locationDrawingProcess) {
+        this.locationDrawingProcess = locationDrawingProcess;
+    }
+
+    public PlotProcess getPlotProcess() {
+        return plotProcess;
+    }
+    public void setPlotProcess(PlotProcess plotProcess) {
+        this.plotProcess = plotProcess;
+    }
+
+    public RevisionsProcess getRevisionsProcess() {
+        return revisionsProcess;
+    }
+    public void setRevisionsProcess(RevisionsProcess revisionsProcess) {
+        this.revisionsProcess = revisionsProcess;
+    }
+
+    public SmoothingProcess getSmoothingProcess() {
+        return smoothingProcess;
+    }
+    public void setSmoothingProcess(SmoothingProcess smoothingProcess) {
+        this.smoothingProcess = smoothingProcess;
+    }
+
+    public StoryboardProcess getStoryboardProcess() {
+        return storyboardProcess;
+    }
+    public void setStoryboardProcess(StoryboardProcess storyboardProcess) {
+        this.storyboardProcess = storyboardProcess;
+    }
+
+    public VoiceActingProcess getVoiceActingProcess() {
+        return voiceActingProcess;
+    }
+    public void setVoiceActingProcess(VoiceActingProcess voiceActingProcess) {
+        this.voiceActingProcess = voiceActingProcess;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public int getMainProcessId() {
         return mainProcessId;
