@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .antMatchers("/api/roles").permitAll()
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/api/registration").permitAll()
+                .antMatchers("/*.png").permitAll()
+                .antMatchers("/*.jpg").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
