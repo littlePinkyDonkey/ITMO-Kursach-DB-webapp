@@ -23,6 +23,4 @@ public interface RegisseurRepository extends JpaRepository<Regisseur, Integer> {
 
     @Procedure("associate_regisseur_and_plot_process")
     boolean associateRegisseurAndPlotProcess(int workerId, int processId);
-
-    Regisseur findRegisseurByMainWorkerId(int workerId);
 }

@@ -41,15 +41,4 @@ public class ProcessController {
         int mainWorkerId = processService.createProcess(processDTO, productId);
         return ResponseEntity.status(HttpStatus.CREATED).body(mainWorkerId);
     }
-
-    @GetMapping(path = "/REVISION_PROCESS", produces = "application/json")
-    public ResponseEntity getAllRevisionProcesses(
-            @PathVariable("productId") int productId,
-            @RequestAttribute("login") String login,
-            @RequestBody PlotProcessDTO advertisingProcessDTO
-    ) {
-        processService.createPloProcess(advertisingProcessDTO, productId, login);
-
-        return null;
-    }
 }

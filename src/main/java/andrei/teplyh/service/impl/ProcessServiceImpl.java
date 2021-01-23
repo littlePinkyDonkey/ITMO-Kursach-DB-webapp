@@ -11,7 +11,6 @@ import andrei.teplyh.exceptions.processes.ProcessesUniqueException;
 import andrei.teplyh.repository.ProductRepository;
 import andrei.teplyh.repository.processes.*;
 import andrei.teplyh.service.ProcessService;
-import andrei.teplyh.service.RegisseurService;
 import andrei.teplyh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,16 +23,15 @@ public class ProcessServiceImpl implements ProcessService {
     private final ProductRepository productRepository;
     private final ProcessRepository processRepository;
     private final PlotProcessRepository plotProcessRepository;
-    private final RegisseurService regisseurService;
 
     private final UserService userService;
 
     @Autowired
-    public ProcessServiceImpl(ProductRepository productRepository, ProcessRepository processRepository, PlotProcessRepository plotProcessRepository, RegisseurService regisseurService, UserService userService) {
+    public ProcessServiceImpl(ProductRepository productRepository, ProcessRepository processRepository,
+                              PlotProcessRepository plotProcessRepository, UserService userService) {
         this.productRepository = productRepository;
         this.processRepository = processRepository;
         this.plotProcessRepository = plotProcessRepository;
-        this.regisseurService = regisseurService;
         this.userService = userService;
     }
 
@@ -88,10 +86,6 @@ public class ProcessServiceImpl implements ProcessService {
                 processDTO.getProcessStatus(),
                 processDTO.getStartDate());
 
-
-        int regisseurId = regisseurService.findRegisseurByLogin(login);
-
-        plotProcessRepository.associateRegisseurAndPlotProcess(regisseurId, processId);
 
         return 0;
     }
