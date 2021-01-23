@@ -13,6 +13,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Procedure("associate_product_and_user")
     boolean associateProductAndUser(int productId, int userId);
 
+    Product findProductByProductId(int productId);
+
     void  deleteProductByProductName(String productName);
 
     void deleteProductByProductId(int productId);
