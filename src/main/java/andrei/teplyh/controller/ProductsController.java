@@ -19,7 +19,7 @@ public class ProductsController {
         this.productService = productService;
     }
 
-    @PostMapping(produces = "application/json")
+    @GetMapping(produces = "application/json")
     public ResponseEntity getAllProducts(@RequestAttribute(name = "login") String login) {
         try {
             List<ProductDTO> response = productService.loadProductsByUsername(login);
