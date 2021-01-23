@@ -1,9 +1,6 @@
 package andrei.teplyh.controller;
 
-import andrei.teplyh.dto.AdvertisingProcessDTO;
-import andrei.teplyh.dto.PlotProcessDTO;
 import andrei.teplyh.dto.ProcessDTO;
-import andrei.teplyh.entity.processes.Process;
 import andrei.teplyh.exceptions.ProductNotFoundException;
 import andrei.teplyh.service.ProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +31,8 @@ public class ProcessController {
     }
 
     @PostMapping(path = "/create_process", produces = "application/json")
-    public ResponseEntity createProcess(
-            @RequestParam(name = "productId") int productId,
-            @RequestBody ProcessDTO processDTO
-    ) {
+    public ResponseEntity createProcess(@PathVariable(name = "productId") int productId,
+                                        @RequestBody ProcessDTO processDTO) {
         int mainWorkerId = processService.createProcess(processDTO, productId);
         return ResponseEntity.status(HttpStatus.CREATED).body(mainWorkerId);
     }

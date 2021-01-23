@@ -47,7 +47,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new UsernameNotFoundException("User not found");
         }
 
-        String token = jwtTokenProvider.createToken(login, user.getRoles());
+        int mainWorkerId = user.getWorker().getMainWorkerId();
+        String token = jwtTokenProvider.createToken(login, user.getRoles(), mainWorkerId);
 
         Map<String, Object> response = new HashMap<>();
         response.put("processes", getAvailableProcesses(user.getRoles()));
