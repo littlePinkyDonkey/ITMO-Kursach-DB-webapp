@@ -3,6 +3,7 @@ package andrei.teplyh.controller;
 import andrei.teplyh.dto.AuthUserDTO;
 import andrei.teplyh.dto.RegistrationUserDTO;
 import andrei.teplyh.entity.User;
+import andrei.teplyh.exceptions.UserAlreadyExistsException;
 import andrei.teplyh.repository.RolesRepository;
 import andrei.teplyh.repository.workers.WorkersRepository;
 import andrei.teplyh.security.jwt.util.JwtTokenProvider;
@@ -47,7 +48,11 @@ public class UserController {
 
     @PostMapping(path = "/registration", produces = "application/json")
     public ResponseEntity signUp(@RequestBody RegistrationUserDTO registrationUserDTO) {
-        registrationService.signUp(registrationUserDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        try {
+            registrationService.signUp(registrationUserDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (UserAlreadyExistsException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

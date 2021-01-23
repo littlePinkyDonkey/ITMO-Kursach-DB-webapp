@@ -3,5 +3,5 @@ package andrei.teplyh.service;
 import java.util.List;
 
 public interface WorkerDeterminationService {
-    void determinateWorker(List<String> roles);
+    void addWorker(List<String> roles, int mainWorkerId);
 }
