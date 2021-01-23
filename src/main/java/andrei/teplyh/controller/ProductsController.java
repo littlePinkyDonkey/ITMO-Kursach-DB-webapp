@@ -5,6 +5,7 @@ import andrei.teplyh.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class ProductsController {
             List<ProductDTO> response = productService.loadProductsByUsername(login);
 
             return ResponseEntity.ok().body(response);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | UsernameNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }

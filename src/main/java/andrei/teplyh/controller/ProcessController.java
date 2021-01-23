@@ -2,6 +2,7 @@ package andrei.teplyh.controller;
 
 import andrei.teplyh.dto.ProcessDTO;
 import andrei.teplyh.entity.processes.Process;
+import andrei.teplyh.exceptions.ProductNotFoundException;
 import andrei.teplyh.service.ProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class ProcessController {
         try {
             List<ProcessDTO> response = processService.getAllProcesses(productId);
             return ResponseEntity.ok().body(response);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | ProductNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }

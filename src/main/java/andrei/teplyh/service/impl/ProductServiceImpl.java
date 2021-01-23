@@ -6,6 +6,7 @@ import andrei.teplyh.entity.User;
 import andrei.teplyh.service.ProductService;
 import andrei.teplyh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> loadProductsByUsername(String username) {
         User user = userService.findUserByLogin(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("User %s not found.", username));
+        }
+
         List<Product> products = user.getProducts();
 
         if (products.size() == 0) {

@@ -3,6 +3,7 @@ package andrei.teplyh.service.impl;
 import andrei.teplyh.dto.ProcessDTO;
 import andrei.teplyh.entity.Product;
 import andrei.teplyh.entity.processes.Process;
+import andrei.teplyh.exceptions.ProductNotFoundException;
 import andrei.teplyh.repository.ProductRepository;
 import andrei.teplyh.service.ProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,13 @@ public class ProcessServiceImpl implements ProcessService {
         this.productRepository = productRepository;
     }
 
-    public List<ProcessDTO> getAllProcesses(int productId) {
+    public List<ProcessDTO> getAllProcesses(int productId) throws ProductNotFoundException {
         Product product = productRepository.findProductByProductId(productId);
+
+        if (product == null) {
+            throw new ProductNotFoundException(String.format("Product %d does not exist", productId));
+        }
+
         List<Process> processes = product.getProcesses();
 
         if (processes.size() == 0) {
