@@ -1,5 +1,7 @@
 package andrei.teplyh.controller;
 
+import andrei.teplyh.dto.AdvertisingProcessDTO;
+import andrei.teplyh.dto.PlotProcessDTO;
 import andrei.teplyh.dto.ProcessDTO;
 import andrei.teplyh.entity.processes.Process;
 import andrei.teplyh.exceptions.ProductNotFoundException;
@@ -38,5 +40,16 @@ public class ProcessController {
     ) {
         int mainWorkerId = processService.createProcess(processDTO, productId);
         return ResponseEntity.status(HttpStatus.CREATED).body(mainWorkerId);
+    }
+
+    @GetMapping(path = "/REVISION_PROCESS", produces = "application/json")
+    public ResponseEntity getAllRevisionProcesses(
+            @PathVariable("productId") int productId,
+            @RequestAttribute("login") String login,
+            @RequestBody PlotProcessDTO advertisingProcessDTO
+    ) {
+        processService.createPloProcess(advertisingProcessDTO, productId, login);
+
+        return null;
     }
 }
