@@ -30,4 +30,13 @@ public class ProcessController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
+    @PostMapping(path = "/create_process", produces = "application/json")
+    public ResponseEntity createProcess(
+            @RequestParam(name = "productId") int productId,
+            @RequestBody ProcessDTO processDTO
+    ) {
+        int mainWorkerId = processService.createProcess(processDTO, productId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(mainWorkerId);
+    }
 }

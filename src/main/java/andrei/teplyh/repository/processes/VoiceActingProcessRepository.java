@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface VoiceActingProcessRepository extends JpaRepository<VoiceActingProcess, Integer> {
     @Procedure("create_voice_acting_process")
-    int createVoiceActingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createVoiceActingProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                      String voiceActingType);
 
     @Procedure("create_existing_voice_acting_process")

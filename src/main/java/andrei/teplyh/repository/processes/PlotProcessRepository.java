@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface PlotProcessRepository extends JpaRepository<PlotProcess, Integer> {
     @Procedure("create_plot_process")
-    int createPlotProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createPlotProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_plot_process")
     int createExistingPlotProcess(int mainProcessId);

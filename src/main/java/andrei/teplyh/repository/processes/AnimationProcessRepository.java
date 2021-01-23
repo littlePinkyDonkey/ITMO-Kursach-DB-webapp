@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface AnimationProcessRepository extends JpaRepository<AnimationProcess, Integer> {
     @Procedure("create_animation_process")
-    int createAnimationProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createAnimationProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                    int frameRate, String animationTechnology);
 
     @Procedure("create_existing_animation_process")

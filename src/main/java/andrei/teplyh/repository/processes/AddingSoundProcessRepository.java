@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface AddingSoundProcessRepository extends JpaRepository<AddingSoundProcess, Integer> {
     @Procedure("create_adding_sound_effect_process")
-    int createAddingSoundEffectProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createAddingSoundEffectProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                            String soundType);
 
     @Procedure("create_existing_adding_sound_effect_process")

@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface SmoothingProcessRepository extends JpaRepository<SmoothingProcess, Integer> {
     @Procedure("create_smoothing_process")
-    int createSmoothingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createSmoothingProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_smoothing_process")
     int createExistingSmoothingProcess(int mainProcessId);

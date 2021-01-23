@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface BattleDrawingProcessRepository extends JpaRepository<BattleDrawingProcess, Integer> {
     @Procedure("create_battle_drawing_process")
-    int createBattleDrawingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createBattleDrawingProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_battle_drawing_process")
     int createExistingBattleDrawingProcess(int mainProcessId);

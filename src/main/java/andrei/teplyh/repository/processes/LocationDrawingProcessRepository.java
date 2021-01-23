@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface LocationDrawingProcessRepository extends JpaRepository<LocationDrawingProcess, Integer> {
     @Procedure("create_location_drawing_process")
-    int createLocationDrawingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createLocationDrawingProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_location_drawing_process")
     int createExistingLocationDrawingProcess(int mainProcessId);

@@ -25,4 +25,52 @@ public class ProcessDTO {
         this.processStatus = processStatus;
         this.startDate = startDate;
     }
+
+    public int getMainProcessId() {
+        return mainProcessId;
+    }
+
+    public void setMainProcessId(int mainProcessId) {
+        this.mainProcessId = mainProcessId;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Timestamp getDeadlineDate() {
+        return deadlineDate;
+    }
+
+    public void setDeadlineDate(Timestamp deadlineDate) {
+        this.deadlineDate = deadlineDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getProcessStatus() {
+        return processStatus;
+    }
+
+    public void setProcessStatus(String processStatus) {
+        this.processStatus = processStatus;
+    }
+
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
 }

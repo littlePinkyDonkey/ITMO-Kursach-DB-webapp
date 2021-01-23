@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface DigitizationProcessRepository extends JpaRepository<DigitizationProcess, Integer> {
     @Procedure("create_digitization_process")
-    int createDigitizationProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createDigitizationProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                       int sketchesNumber, String digitizationType);
 
     @Procedure("create_existing_digitization_process")

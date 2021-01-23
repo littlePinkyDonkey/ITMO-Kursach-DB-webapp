@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface AdvertisingProcessRepository extends JpaRepository<AdvertisingProcess, Integer> {
     @Procedure("create_advertising_process")
-    int createAdvertisingProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createAdvertisingProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                      String insertionLocation);
 
     @Procedure("create_existing_advertising_process")

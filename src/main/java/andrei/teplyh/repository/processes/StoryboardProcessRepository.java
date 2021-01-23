@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface StoryboardProcessRepository extends JpaRepository<StoryboardProcess, Integer> {
     @Procedure("create_storyboard_process")
-    int createStoryboardProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createStoryboardProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                     int frameNumber);
 
     @Procedure("create_existing_storyboard_process")

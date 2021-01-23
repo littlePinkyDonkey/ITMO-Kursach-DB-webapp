@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface RevisionsProcessRepository extends JpaRepository<RevisionsProcess, Integer> {
     @Procedure("create_revision_process")
-    int createRevisionProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
+    int createRevisionProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate,
                                   String revisionType);
 
     @Procedure("create_existing_revision_process")

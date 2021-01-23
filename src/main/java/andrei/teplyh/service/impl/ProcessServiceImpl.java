@@ -4,7 +4,9 @@ import andrei.teplyh.dto.ProcessDTO;
 import andrei.teplyh.entity.Product;
 import andrei.teplyh.entity.processes.Process;
 import andrei.teplyh.exceptions.ProductNotFoundException;
+import andrei.teplyh.exceptions.processes.ProcessesUniqueException;
 import andrei.teplyh.repository.ProductRepository;
+import andrei.teplyh.repository.processes.ProcessRepository;
 import andrei.teplyh.service.ProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,9 +18,15 @@ import java.util.stream.Collectors;
 public class ProcessServiceImpl implements ProcessService {
     private final ProductRepository productRepository;
 
+    private final ProcessRepository processRepository;
+
     @Autowired
-    public ProcessServiceImpl(ProductRepository productRepository) {
+    public ProcessServiceImpl(
+            ProductRepository productRepository,
+            ProcessRepository processRepository
+    ) {
         this.productRepository = productRepository;
+        this.processRepository = processRepository;
     }
 
     public List<ProcessDTO> getAllProcesses(int productId) throws ProductNotFoundException {
@@ -46,5 +54,19 @@ public class ProcessServiceImpl implements ProcessService {
                         )
                 )
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public int createProcess(ProcessDTO processDTO, int productId) {
+        int mainProcessId = processRepository.createProcess(
+                productId,
+                processDTO.getDuration(),
+                processDTO.getDeadlineDate(),
+                processDTO.getDescription(),
+                processDTO.getProcessStatus(),
+                processDTO.getStartDate()
+        );
+
+        return mainProcessId;
     }
 }

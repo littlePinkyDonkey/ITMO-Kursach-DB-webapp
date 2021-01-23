@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Repository
 public interface CharacterDescriptionProcessRepository extends JpaRepository<CharacterDescriptionProcess, Integer> {
     @Procedure("create_character_description_process")
-    int createCharacterDescriptionProcess(int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
+    int createCharacterDescriptionProcess(int productId, int duration, Timestamp deadlineDate, String description, String status, Timestamp startDate);
 
     @Procedure("create_existing_character_description_process")
     int createExistingCharacterDescriptionProcess(int mainProcessId);
