@@ -4,13 +4,15 @@ public class ProductDTO {
     private String description;
     private String authorName;
     private String productName;
+    private int productId;
 
     public ProductDTO() {
     }
-    public ProductDTO(String description, String authorName, String productName) {
+    public ProductDTO(String description, String authorName, String productName, int productId) {
         this.description = description;
         this.authorName = authorName;
         this.productName = productName;
+        this.productId = productId;
     }
 
     public String getDescription() {
@@ -32,5 +34,12 @@ public class ProductDTO {
     }
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }

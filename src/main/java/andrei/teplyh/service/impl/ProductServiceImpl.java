@@ -31,7 +31,12 @@ public class ProductServiceImpl implements ProductService {
 
         return products.stream()
                 .map(
-                        product -> new ProductDTO(product.getDescription(), product.getAuthorName(), product.getProductName())
+                        product -> new ProductDTO(
+                                product.getDescription(),
+                                product.getAuthorName(),
+                                product.getProductName(),
+                                product.getProductId()
+                        )
                 ).collect(Collectors.toList());
     }
 }
