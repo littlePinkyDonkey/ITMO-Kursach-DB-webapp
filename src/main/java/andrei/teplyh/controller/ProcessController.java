@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products/{productId}")
+@RequestMapping("/api/products/{product_id}")
 public class ProcessController {
     private final ProcessService processService;
 
@@ -21,7 +21,7 @@ public class ProcessController {
     }
 
     @GetMapping
-    public ResponseEntity getProcesses(@PathVariable("productId") int productId) {
+    public ResponseEntity getProcesses(@PathVariable("product_id") int productId) {
         try {
             List<ProcessDTO> response = processService.getAllProcesses(productId);
             return ResponseEntity.ok().body(response);
@@ -31,9 +31,13 @@ public class ProcessController {
     }
 
     @PostMapping(path = "/create_process", produces = "application/json")
-    public ResponseEntity createProcess(@PathVariable(name = "productId") int productId,
+    public ResponseEntity createProcess(@PathVariable(name = "product_id") int productId,
                                         @RequestBody ProcessDTO processDTO) {
-        int mainWorkerId = processService.createProcess(processDTO, productId);
-        return ResponseEntity.status(HttpStatus.CREATED).body(mainWorkerId);
+        try {
+            int mainWorkerId = processService.createProcess(processDTO, productId);
+            return ResponseEntity.status(HttpStatus.CREATED).body(mainWorkerId);
+        } catch (ProductNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }

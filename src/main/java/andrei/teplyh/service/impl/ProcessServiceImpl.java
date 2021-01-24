@@ -1,13 +1,10 @@
 package andrei.teplyh.service.impl;
 
-import andrei.teplyh.dto.AdvertisingProcessDTO;
 import andrei.teplyh.dto.PlotProcessDTO;
 import andrei.teplyh.dto.ProcessDTO;
 import andrei.teplyh.entity.Product;
-import andrei.teplyh.entity.processes.*;
 import andrei.teplyh.entity.processes.Process;
 import andrei.teplyh.exceptions.ProductNotFoundException;
-import andrei.teplyh.exceptions.processes.ProcessesUniqueException;
 import andrei.teplyh.repository.ProductRepository;
 import andrei.teplyh.repository.processes.*;
 import andrei.teplyh.service.ProcessService;
@@ -39,13 +36,13 @@ public class ProcessServiceImpl implements ProcessService {
         Product product = productRepository.findProductByProductId(productId);
 
         if (product == null) {
-            throw new ProductNotFoundException(String.format("Product %d does not exist", productId));
+            throw new ProductNotFoundException(String.format("Product with id = %d does not exist", productId));
         }
 
         List<Process> processes = product.getProcesses();
 
         if (processes.size() == 0) {
-            throw new NullPointerException(String.format("Product %d: %s has no processes.", productId, product.getProductName()));
+            throw new NullPointerException(String.format("Product with id %d: %s has no processes.", productId, product.getProductName()));
         }
 
         return processes.stream()
@@ -63,7 +60,7 @@ public class ProcessServiceImpl implements ProcessService {
     }
 
     @Override
-    public int createProcess(ProcessDTO processDTO, int productId) {
+    public int createProcess(ProcessDTO processDTO, int productId) throws ProductNotFoundException {
         int mainProcessId = processRepository.createProcess(
                 productId,
                 processDTO.getDuration(),
@@ -72,6 +69,12 @@ public class ProcessServiceImpl implements ProcessService {
                 processDTO.getProcessStatus(),
                 processDTO.getStartDate()
         );
+
+        if (mainProcessId == -2) {
+            throw new ProductNotFoundException(
+                    String.format("Process can not be created, because product with id = %d does not exists.", productId)
+            );
+        }
 
         return mainProcessId;
     }
