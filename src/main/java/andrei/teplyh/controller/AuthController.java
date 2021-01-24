@@ -16,13 +16,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class UserController {
+public class AuthController {
     private final AuthenticationService authenticationService;
 
     private final RegistrationService registrationService;
 
     @Autowired
-    public UserController(AuthenticationService authenticationService, RegistrationService registrationService) {
+    public AuthController(AuthenticationService authenticationService, RegistrationService registrationService) {
         this.authenticationService = authenticationService;
         this.registrationService = registrationService;
     }

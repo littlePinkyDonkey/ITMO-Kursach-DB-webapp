@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products/{product_id}")
-public class ProcessController {
+@RequestMapping("/api/product/{product_id}")
+public class ProductController {
     private final ProcessService processService;
 
     @Autowired
-    public ProcessController(ProcessService processService) {
+    public ProductController(ProcessService processService) {
         this.processService = processService;
     }
 
