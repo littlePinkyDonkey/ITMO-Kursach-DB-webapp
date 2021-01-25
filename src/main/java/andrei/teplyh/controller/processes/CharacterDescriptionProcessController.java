@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/character_description_process")
+@RequestMapping("/api/processes/character_description_process")
 public class CharacterDescriptionProcessController {
     private final CharacterDescriptionProcessService characterDescriptionProcessService;
 

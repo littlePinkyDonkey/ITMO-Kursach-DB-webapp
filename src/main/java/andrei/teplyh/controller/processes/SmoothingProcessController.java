@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/smoothing_process")
+@RequestMapping("/api/processes/smoothing_process")
 public class SmoothingProcessController {
     private final SmoothingProcessService smoothingProcessService;
 

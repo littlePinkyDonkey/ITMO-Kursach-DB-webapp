@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/plot_process")
+@RequestMapping("/api/processes/plot_process")
 public class PlotProcessController {
     private final PlotProcessService plotProcessService;
 

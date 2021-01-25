@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/revisions_process")
+@RequestMapping("/api/processes/revisions_process")
 public class RevisionsProcessController {
     private final RevisionsProcessService revisionsProcessService;
 

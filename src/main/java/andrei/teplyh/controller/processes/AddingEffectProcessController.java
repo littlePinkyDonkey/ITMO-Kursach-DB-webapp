@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/adding_effect_process")
+@RequestMapping("/api/processes/adding_effect_process")
 public class AddingEffectProcessController {
     private final AddingEffectProcessService addingEffectProcessService;
 

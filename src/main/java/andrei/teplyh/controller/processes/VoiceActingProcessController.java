@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/voice_acting_process")
+@RequestMapping("/api/processes/voice_acting_process")
 public class VoiceActingProcessController {
     private final VoiceActingProcessService voiceActingProcessService;
 

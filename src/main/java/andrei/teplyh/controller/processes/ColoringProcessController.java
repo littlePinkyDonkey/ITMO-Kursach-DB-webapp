@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/coloring_process")
+@RequestMapping("/api/processes/coloring_process")
 public class ColoringProcessController {
     private final ColoringProcessService coloringProcessService;
 

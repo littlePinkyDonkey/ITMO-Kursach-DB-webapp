@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/adding_sound_process")
+@RequestMapping("/api/processes/adding_sound_process")
 public class AddingSoundProcessController {
     private final AddingSoundProcessService addingSoundProcessService;
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/character_select_process")
+@RequestMapping("/api/processes/character_select_process")
 public class CharacterSelectProcessController {
     private final CharacterSelectProcessService characterSelectProcessService;
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/character_drawing_process")
+@RequestMapping("/api/processes/character_drawing_process")
 public class CharacterDrawingProcessController {
     private final CharacterDrawingProcessService characterDrawingProcessService;
 

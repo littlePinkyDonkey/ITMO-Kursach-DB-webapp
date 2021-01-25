@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/location_drawing_process")
+@RequestMapping("/api/processes/location_drawing_process")
 public class LocationDrawingProcessController {
     private final LocationDrawingProcessService locationDrawingProcessService;
 

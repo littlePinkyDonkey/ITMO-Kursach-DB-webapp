@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/battle_description_process")
+@RequestMapping("/api/processes/battle_description_process")
 public class BattleDescriptionProcessController {
     private final BattleDescriptionProcessService battleDescriptionProcessService;
 

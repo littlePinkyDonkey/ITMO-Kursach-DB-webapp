@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/digitization_process")
+@RequestMapping("/api/processes/digitization_process")
 public class DigitizationProcessController {
     private final DigitizationProcessService digitizationProcessService;
 
