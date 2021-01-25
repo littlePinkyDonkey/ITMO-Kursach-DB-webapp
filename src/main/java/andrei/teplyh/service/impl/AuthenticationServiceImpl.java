@@ -48,7 +48,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
 
         int mainWorkerId = user.getWorker().getMainWorkerId();
-        String token = jwtTokenProvider.createToken(login, user.getRoles(), mainWorkerId);
+        int userId = user.getUserId();
+        String token = jwtTokenProvider.createToken(login, user.getRoles(), mainWorkerId, userId);
 
         Map<String, Object> response = new HashMap<>();
         response.put("processes", getAvailableProcesses(user.getRoles()));

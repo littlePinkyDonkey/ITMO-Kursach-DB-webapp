@@ -33,6 +33,7 @@ public class JwtTokenFilter extends GenericFilterBean {
             }
             servletRequest.setAttribute("login", jwtTokenProvider.getLogin(token));
             servletRequest.setAttribute("mainWorkerId", jwtTokenProvider.getMainWorkerId(token));
+            servletRequest.setAttribute("userId", jwtTokenProvider.getUserId(token));
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }
