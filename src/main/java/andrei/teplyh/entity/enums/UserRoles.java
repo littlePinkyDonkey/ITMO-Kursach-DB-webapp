@@ -171,7 +171,6 @@ public enum UserRoles {
 
     UserRoles(String description) {
         this.description = description;
-        this.availableProcesses = availableProcesses;
     }
 
     public String getDescription() {
