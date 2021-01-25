@@ -3,6 +3,7 @@ package andrei.teplyh.service.impl;
 import andrei.teplyh.dto.ProductDTO;
 import andrei.teplyh.entity.Product;
 import andrei.teplyh.entity.User;
+import andrei.teplyh.repository.ProductRepository;
 import andrei.teplyh.service.ProductService;
 import andrei.teplyh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,15 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
     private final UserService userService;
+    private final ProductRepository productRepository;
 
     @Autowired
-    public ProductServiceImpl(UserService userService) {
+    public ProductServiceImpl(
+            UserService userService,
+            ProductRepository productRepository
+    ) {
         this.userService = userService;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -45,5 +51,19 @@ public class ProductServiceImpl implements ProductService {
                                 product.getPosterPath()
                         )
                 ).collect(Collectors.toList());
+    }
+
+    @Override
+    public int createProduct(ProductDTO productDTO, int userId) {
+        int productId = productRepository.createProduct(
+                productDTO.getPosterPath(),
+                productDTO.getDescription(),
+                productDTO.getProductName(),
+                productDTO.getAuthorName()
+        );
+
+        productRepository.associateProductAndUser(productId, userId);
+
+        return productId;
     }
 }

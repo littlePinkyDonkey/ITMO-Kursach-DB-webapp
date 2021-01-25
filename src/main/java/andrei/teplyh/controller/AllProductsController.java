@@ -30,4 +30,11 @@ public class AllProductsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
+    @PostMapping(path = "/create_product")
+    public ResponseEntity createProduct(@RequestAttribute(name = "userId") int userId,
+                                        @RequestBody ProductDTO productDTO) {
+        int productId = productService.createProduct(productDTO, userId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productId);
+    }
 }

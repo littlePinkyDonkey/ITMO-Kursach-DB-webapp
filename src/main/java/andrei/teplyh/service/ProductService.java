@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ProductService {
     List<ProductDTO> loadProductsByUsername(String username);
+
+    int createProduct(ProductDTO productDTO, int userId);
 }

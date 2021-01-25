@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .antMatchers("/api/roles").permitAll()
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/api/registration").permitAll()
+
                 .antMatchers("/api/processes/ability_description_process/**").hasRole(UserRoles.ROLES_DESIGNER.toString())
                 .antMatchers("/api/processes/character_description_process/**").hasRole(UserRoles.ROLES_DESIGNER.toString())
                 .antMatchers("/api/processes/adding_effect_process/**").hasRole(UserRoles.ARTIST.toString())
@@ -62,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .antMatchers("/api/processes/smoothing_process/**").hasRole(UserRoles.SMOOTHING_SPECIALIST.toString())
                 .antMatchers("/api/processes/storyboard_process/**").hasRole(UserRoles.STORYBOARD_ARTIST.toString())
                 .antMatchers("/api/processes/voice_acting_process/**").hasRole(UserRoles.RECORDING_ACTOR.toString())
+
                 .antMatchers("/*.png").permitAll()
                 .antMatchers("/*.jpg").permitAll()
                 .anyRequest().authenticated()
