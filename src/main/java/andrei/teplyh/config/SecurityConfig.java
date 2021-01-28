@@ -1,6 +1,5 @@
 package andrei.teplyh.config;
 
-import andrei.teplyh.entity.User;
 import andrei.teplyh.entity.enums.UserRoles;
 import andrei.teplyh.security.jwt.config.JwtConfigurer;
 import andrei.teplyh.security.jwt.util.JwtTokenProvider;
