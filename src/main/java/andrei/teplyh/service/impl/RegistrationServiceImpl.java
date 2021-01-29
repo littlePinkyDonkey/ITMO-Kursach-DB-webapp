@@ -7,7 +7,7 @@ import andrei.teplyh.repository.RolesRepository;
 import andrei.teplyh.repository.workers.WorkersRepository;
 import andrei.teplyh.service.RegistrationService;
 import andrei.teplyh.service.UserService;
-import andrei.teplyh.service.WorkerDeterminationService;
+import andrei.teplyh.service.WorkerDispatcherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,19 +19,19 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     private final WorkersRepository workersRepository;
 
-    private final WorkerDeterminationService workerDeterminationService;
+    private final WorkerDispatcherService workerDispatcherService;
 
     @Autowired
     public RegistrationServiceImpl(
             UserService userService,
             RolesRepository rolesRepository,
             WorkersRepository workersRepository,
-            WorkerDeterminationService workerDeterminationService
+            WorkerDispatcherService workerDispatcherService
     ) {
         this.userService = userService;
         this.rolesRepository = rolesRepository;
         this.workersRepository = workersRepository;
-        this.workerDeterminationService = workerDeterminationService;
+        this.workerDispatcherService = workerDispatcherService;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class RegistrationServiceImpl implements RegistrationService {
             for (String role : registrationUserDTO.getRoles()) {
                 rolesRepository.addRoleToUser(userId, role);
             }
-            workerDeterminationService.addWorker(registrationUserDTO.getRoles(), mainWorkerId);
+            workerDispatcherService.dispatch(registrationUserDTO.getRoles(), mainWorkerId);
         }
     }
 }

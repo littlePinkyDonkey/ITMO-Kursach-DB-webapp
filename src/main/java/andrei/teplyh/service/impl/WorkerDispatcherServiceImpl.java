@@ -2,7 +2,7 @@ package andrei.teplyh.service.impl;
 
 import andrei.teplyh.entity.enums.*;
 import andrei.teplyh.repository.workers.*;
-import andrei.teplyh.service.WorkerDeterminationService;
+import andrei.teplyh.service.WorkerDispatcherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class WorkerDeterminationServiceImpl implements WorkerDeterminationService {
+public class WorkerDispatcherServiceImpl implements WorkerDispatcherService {
     private final ApplicationContext applicationContext;
 
     @Autowired
-    public WorkerDeterminationServiceImpl(ApplicationContext applicationContext) {
+    public WorkerDispatcherServiceImpl(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
     @Override
-    public void addWorker(List<String> roles, int mainWorkerId) {
+    public void dispatch(List<String> roles, int mainWorkerId) {
         for (String role : roles) {
             if (role.equals("ROLE_ART_DIRECTOR")) {
                 ArtDirectorRepository artDirectorRepository
