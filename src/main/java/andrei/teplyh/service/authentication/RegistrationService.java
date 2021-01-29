@@ -1,4 +1,4 @@
-package andrei.teplyh.service;
+package andrei.teplyh.service.authentication;
 
 import andrei.teplyh.dto.RegistrationUserDTO;
 import andrei.teplyh.exceptions.UserAlreadyExistsException;

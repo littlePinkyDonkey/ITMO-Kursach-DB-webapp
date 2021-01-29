@@ -1,11 +1,11 @@
-package andrei.teplyh.service.impl;
+package andrei.teplyh.service.impl.authentication;
 
 import andrei.teplyh.dto.AuthUserDTO;
 import andrei.teplyh.entity.Role;
 import andrei.teplyh.entity.User;
 import andrei.teplyh.entity.enums.UserRoles;
 import andrei.teplyh.security.jwt.util.JwtTokenProvider;
-import andrei.teplyh.service.AuthenticationService;
+import andrei.teplyh.service.authentication.AuthenticationService;
 import andrei.teplyh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

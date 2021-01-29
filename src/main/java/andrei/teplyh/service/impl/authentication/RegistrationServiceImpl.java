@@ -1,11 +1,11 @@
-package andrei.teplyh.service.impl;
+package andrei.teplyh.service.impl.authentication;
 
 import andrei.teplyh.dto.RegistrationUserDTO;
 import andrei.teplyh.entity.User;
 import andrei.teplyh.exceptions.UserAlreadyExistsException;
 import andrei.teplyh.repository.RolesRepository;
 import andrei.teplyh.repository.workers.WorkersRepository;
-import andrei.teplyh.service.RegistrationService;
+import andrei.teplyh.service.authentication.RegistrationService;
 import andrei.teplyh.service.UserService;
 import andrei.teplyh.service.WorkerDispatcherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +54,8 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (registrationUserDTO.getRoles() != null) {
             for (String role : registrationUserDTO.getRoles()) {
                 rolesRepository.addRoleToUser(userId, role);
+                workerDispatcherService.dispatch(role, mainWorkerId);
             }
-            workerDispatcherService.dispatch(registrationUserDTO.getRoles(), mainWorkerId);
         }
     }
 }
