@@ -24,7 +24,7 @@ public class WorkerDispatcherServiceImpl implements WorkerDispatcherService {
     }
 
     @Override
-    public void dispatch(String role, int mainWorkerId) {
+    public void addWorker(String role, int mainWorkerId) {
         if (role.equals("ROLE_ART_DIRECTOR")) {
             ArtDirectorService artDirectorService
                     = applicationContext.getBean("artDirectorServiceImpl", ArtDirectorService.class);

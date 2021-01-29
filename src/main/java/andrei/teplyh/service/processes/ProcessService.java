@@ -1,4 +1,4 @@
-package andrei.teplyh.service;
+package andrei.teplyh.service.processes;
 
 import andrei.teplyh.dto.PlotProcessDTO;
 import andrei.teplyh.dto.ProcessDTO;
@@ -10,6 +10,4 @@ public interface ProcessService {
     List<ProcessDTO> getAllProcesses(int productId) throws ProductNotFoundException;
 
     int createProcess(ProcessDTO processDTO, int productId) throws ProductNotFoundException;
-
-    int createPloProcess(PlotProcessDTO processDTO, int productId, String login);
 }

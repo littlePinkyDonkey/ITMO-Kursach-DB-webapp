@@ -54,7 +54,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (registrationUserDTO.getRoles() != null) {
             for (String role : registrationUserDTO.getRoles()) {
                 rolesRepository.addRoleToUser(userId, role);
-                workerDispatcherService.dispatch(role, mainWorkerId);
+                workerDispatcherService.addWorker(role, mainWorkerId);
             }
         }
     }

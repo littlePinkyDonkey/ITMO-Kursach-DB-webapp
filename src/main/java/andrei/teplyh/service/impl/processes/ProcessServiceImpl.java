@@ -1,13 +1,12 @@
-package andrei.teplyh.service.impl;
+package andrei.teplyh.service.impl.processes;
 
-import andrei.teplyh.dto.PlotProcessDTO;
 import andrei.teplyh.dto.ProcessDTO;
 import andrei.teplyh.entity.Product;
 import andrei.teplyh.entity.processes.Process;
 import andrei.teplyh.exceptions.ProductNotFoundException;
 import andrei.teplyh.repository.ProductRepository;
 import andrei.teplyh.repository.processes.*;
-import andrei.teplyh.service.ProcessService;
+import andrei.teplyh.service.processes.ProcessService;
 import andrei.teplyh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -77,19 +76,5 @@ public class ProcessServiceImpl implements ProcessService {
         }
 
         return mainProcessId;
-    }
-
-    @Override
-    public int createPloProcess(PlotProcessDTO processDTO, int productId, String login) {
-        int processId = plotProcessRepository.createPlotProcess(
-                productId,
-                processDTO.getDuration(),
-                processDTO.getDeadlineDate(),
-                processDTO.getDescription(),
-                processDTO.getProcessStatus(),
-                processDTO.getStartDate());
-
-
-        return 0;
     }
 }
