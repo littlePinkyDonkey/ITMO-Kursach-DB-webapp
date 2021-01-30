@@ -1,7 +1,6 @@
 package andrei.teplyh.security.jwt.util;
 
 import andrei.teplyh.entity.Role;
-import andrei.teplyh.security.jwt.exceptions.JwtAuthenticationException;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

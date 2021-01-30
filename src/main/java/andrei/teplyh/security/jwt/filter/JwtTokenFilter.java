@@ -2,6 +2,7 @@ package andrei.teplyh.security.jwt.filter;
 
 import andrei.teplyh.security.jwt.util.JwtTokenProvider;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -29,7 +30,9 @@ public class JwtTokenFilter extends GenericFilterBean {
             Authentication authentication = jwtTokenProvider.getAuthentication(token);
 
             if (authentication != null) {
-                SecurityContextHolder.getContext().setAuthentication(authentication);
+                SecurityContext context = SecurityContextHolder.createEmptyContext();
+                context.setAuthentication(authentication);
+                SecurityContextHolder.setContext(context);
             }
             servletRequest.setAttribute("login", jwtTokenProvider.getLogin(token));
             servletRequest.setAttribute("mainWorkerId", jwtTokenProvider.getMainWorkerId(token));
